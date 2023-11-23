@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2023 at 02:26 AM
+-- Generation Time: Nov 23, 2023 at 05:42 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -92,6 +92,14 @@ CREATE TABLE `products` (
   `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`product_id`, `product_name`, `price`, `description`, `image_url`, `stock`) VALUES
+(1, 'top', 12.30, 'nice', 'top.png', 45),
+(2, 'saree', 45.23, 'good', 'sarree.png', 85);
+
 -- --------------------------------------------------------
 
 --
@@ -132,24 +140,20 @@ CREATE TABLE `product_size` (
 --
 
 CREATE TABLE `shopping_cart` (
-  `cart_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `shopping_cart_items`
---
-
-CREATE TABLE `shopping_cart_items` (
   `cart_item_id` int(11) NOT NULL,
-  `cart_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `color` varchar(50) NOT NULL,
-  `size` varchar(10) NOT NULL
+  `color` varchar(100) NOT NULL,
+  `size` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `shopping_cart`
+--
+
+INSERT INTO `shopping_cart` (`cart_item_id`, `user_id`, `product_id`, `quantity`, `color`, `size`) VALUES
+(1, 1, 0, 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -165,6 +169,13 @@ CREATE TABLE `users` (
   `password` char(255) NOT NULL,
   `reg_date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `username`, `phone`, `email`, `password`, `reg_date`) VALUES
+(1, 'mala', '0123647859', 'mala@gmail.com', '1234', '2023-11-23');
 
 -- --------------------------------------------------------
 
@@ -192,6 +203,14 @@ CREATE TABLE `wishlist` (
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`user_id`, `product_id`) VALUES
+(1, 1),
+(1, 2);
 
 --
 -- Indexes for dumped tables
@@ -254,16 +273,8 @@ ALTER TABLE `product_size`
 -- Indexes for table `shopping_cart`
 --
 ALTER TABLE `shopping_cart`
-  ADD PRIMARY KEY (`cart_id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `shopping_cart_items`
---
-ALTER TABLE `shopping_cart_items`
   ADD PRIMARY KEY (`cart_item_id`),
-  ADD KEY `cart_id` (`cart_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `users`
@@ -317,25 +328,19 @@ ALTER TABLE `placed_order`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `shopping_cart`
 --
 ALTER TABLE `shopping_cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `shopping_cart_items`
---
-ALTER TABLE `shopping_cart_items`
-  MODIFY `cart_item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_address`
@@ -385,13 +390,6 @@ ALTER TABLE `product_size`
 --
 ALTER TABLE `shopping_cart`
   ADD CONSTRAINT `shopping_cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `shopping_cart_items`
---
-ALTER TABLE `shopping_cart_items`
-  ADD CONSTRAINT `shopping_cart_items_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `shopping_cart` (`cart_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `shopping_cart_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user_address`
