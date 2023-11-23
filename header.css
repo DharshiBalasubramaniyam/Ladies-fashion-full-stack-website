@@ -1,0 +1,194 @@
+header {
+    height: 15vh;
+    position: fixed;
+    width: 100%;
+}
+.top-header {
+    height: 10vh;
+    padding: 1% 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--white);
+}
+.top-header .logo img {
+    width: 200px;
+    height: 47px;
+}
+.top-header .search {
+    position: relative;
+    width: 400px;
+    height: 100%;
+}
+.top-header .search input{
+    padding: 8px 50px 8px 15px;
+    width: 400px;
+    border-radius: 5px;
+    border: 2px solid var(--grey);
+    font-size: 15px;
+}
+.top-header .search button {
+    position: absolute;
+    top: 1px;
+    right:0;
+    height: 40px;
+    width: 40px;
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+}
+.top-header input:focus {
+    border: 2px solid var(--pink);
+}
+.top-header .top-header-right {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.top-header .top-header-right > span {
+    position: relative;
+}
+.top-header .top-header-right  span span {
+    color: var(--pink);
+    background-color: var(--lightpink);
+    position: absolute;
+    top: -80%;
+    padding: 0px 5px;
+    right: -100%;
+    font-size: 15px;
+    border-radius: 5px;
+}
+.top-header .top-header-right .user i {
+    margin-left: 10px;
+}
+.bottom-header {
+    height: 5vh;
+    padding: 0 8%;
+    background-color: var(--white);
+    border-bottom: 2px solid var(--lightpink);
+
+}
+.bottom-header ul {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+header a {
+    font-size: 15px;
+}
+header .mobile-setup, .toggle-menu, .menu {
+    display: none;
+}
+header a, header i{
+    transition: 0.3s;
+    cursor: pointer;
+}
+header a:hover, header i:hover {
+    color: var(--pink);
+}
+
+@media all and (max-width:1200px) {
+    .top-header, .bottom-header {
+        padding: 1% 3%;
+    }
+}
+
+@media all and (max-width:900px) {
+    header .laptop-setup {
+        display: none;
+    }
+    header .mobile-setup, header .toggle-menu {
+        display: inline-block;
+    }
+    header .search-body {
+        position: fixed;
+        top: 10vh;
+        min-height: 90vh;
+        background-color: var(--white);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 50px 10px;
+        left: -100%;
+        transition: 0.3s;
+    } 
+    header .search-body > i {
+        position: absolute;
+        top: 10px;
+        left: 3%;
+        font-size: 20px;
+    }
+    header .search-body.open {
+        left: 0;
+    }
+    header .search-body .search{
+        position: relative;
+        width: 98%;
+        height: 40px;
+    }
+    header .search-body .search input{
+        padding: 8px 50px 8px 15px;
+        width: 100%;
+        border-radius: 5px;
+        border: 2px solid var(--grey);
+        font-size: 15px;
+    }
+    header .search-body .search input:focus{
+        border: 2px solid var(--pink);
+    }
+    header .search-body .search button {
+        position: absolute;
+        right: 0;
+        height: 42px;
+        width: 40px;
+        border: none;
+        background-color: transparent;
+        font-size: 18px; 
+    }
+    .top-header input:focus {
+        border: 2px solid var(--pink);
+    }
+    header {
+        min-height: 100vh;
+    }
+    .top-header .logo img {
+        width: 150px;
+        height: 45px;
+    }
+    .top-header {
+        position: fixed;
+        width: 100%;
+        border-bottom: 2px solid var(--grey);
+    }
+    .bottom-header {
+        position: fixed;
+        top: 10vh;
+        width: 100%;
+        min-height: 90vh;
+        left: -100%;
+        transition: 0.3s;
+    } 
+    .bottom-header.open {
+        left: 0;
+    }
+    .bottom-header ul {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: flex-start;
+        width: 100%;
+    }
+    .bottom-header ul li{
+        width: 100%;
+        border-bottom: 2px solid rgba(255, 99, 99, 0.2);
+    }
+    .bottom-header ul li a{
+        display: block;
+        width: 100%;
+        padding: 15px 0;
+ 
+    }
+}
