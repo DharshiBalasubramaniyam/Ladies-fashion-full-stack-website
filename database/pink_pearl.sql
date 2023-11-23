@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2023 at 05:42 AM
+-- Generation Time: Nov 23, 2023 at 02:09 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -153,7 +153,8 @@ CREATE TABLE `shopping_cart` (
 --
 
 INSERT INTO `shopping_cart` (`cart_item_id`, `user_id`, `product_id`, `quantity`, `color`, `size`) VALUES
-(1, 1, 0, 0, '', '');
+(2, 1, 1, 4, '', ''),
+(3, 1, 2, 2, '', '');
 
 -- --------------------------------------------------------
 
@@ -165,6 +166,7 @@ CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `phone` varchar(10) NOT NULL,
+  `address` text NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` char(255) NOT NULL,
   `reg_date` date NOT NULL DEFAULT current_timestamp()
@@ -174,24 +176,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `phone`, `email`, `password`, `reg_date`) VALUES
-(1, 'mala', '0123647859', 'mala@gmail.com', '1234', '2023-11-23');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_address`
---
-
-CREATE TABLE `user_address` (
-  `address_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `address_line_1` varchar(250) NOT NULL,
-  `address_line_2` varchar(250) NOT NULL,
-  `city` varchar(250) NOT NULL,
-  `country` varchar(250) NOT NULL,
-  `type` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `users` (`user_id`, `username`, `phone`, `address`, `email`, `password`, `reg_date`) VALUES
+(1, 'mala', '0123647859', 'colombo', 'mala@gmail.com', '1234', '2023-11-23');
 
 -- --------------------------------------------------------
 
@@ -283,13 +269,6 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- Indexes for table `user_address`
---
-ALTER TABLE `user_address`
-  ADD PRIMARY KEY (`address_id`),
-  ADD KEY `user_id` (`user_id`);
-
---
 -- Indexes for table `wishlist`
 --
 ALTER TABLE `wishlist`
@@ -334,19 +313,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `shopping_cart`
 --
 ALTER TABLE `shopping_cart`
-  MODIFY `cart_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cart_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `user_address`
---
-ALTER TABLE `user_address`
-  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -390,12 +363,6 @@ ALTER TABLE `product_size`
 --
 ALTER TABLE `shopping_cart`
   ADD CONSTRAINT `shopping_cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `user_address`
---
-ALTER TABLE `user_address`
-  ADD CONSTRAINT `user_address_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `wishlist`
