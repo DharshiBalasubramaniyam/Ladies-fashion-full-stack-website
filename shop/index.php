@@ -131,7 +131,7 @@
     <?php
         include '../database/dbconnection.php';
 
-        $all_messages = mysqli_query($connection,"SELECT * from messages LIMIT 3") or die(mysqli_error($conn));
+        $all_messages = mysqli_query($connection,"SELECT * from reviews inner join users on (reviews.user_id=users.user_id) LIMIT 3") or die(mysqli_error($conn));
     ?>
 
     <section id="review">
@@ -153,7 +153,7 @@
                         </div>
 
                         <div class="name_user">
-                            <strong><?php echo $row['name']; ?></strong>
+                            <strong><?php echo $row['username']; ?></strong>
                             <span><?php echo $row['email']; ?></span>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
                 </div>
 
                 <div class="comments">
-                    <?php echo $row['message']; ?>
+                    <?php echo $row['comment']; ?>
                 </div>
 
                 <div class="date">

@@ -1,7 +1,7 @@
 <?php
 include '../database/dbconnection.php';
 
-$all_messages = mysqli_query($connection,"SELECT * from messages") or die(mysqli_error($conn));
+$all_messages = mysqli_query($connection,"SELECT * from reviews inner join users on (reviews.user_id=users.user_id)") or die(mysqli_error($conn));
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +39,7 @@ while($row= mysqli_fetch_assoc($all_messages)){
                         </div>
 
                     <div class="name_user">
-                        <strong><?php echo $row['name']; ?></strong>
+                        <strong><?php echo $row['username']; ?></strong>
                         <span><?php echo $row['email']; ?></span>
                     </div>
                     </div>
@@ -57,7 +57,7 @@ while($row= mysqli_fetch_assoc($all_messages)){
                 </div>
 
                 <div class="comments">
-                    <p><?php echo $row['message']; ?></p>
+                    <p><?php echo $row['comment']; ?></p>
                 </div>
 
                 <div class="date">
