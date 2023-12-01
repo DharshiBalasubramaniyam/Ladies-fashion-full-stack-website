@@ -18,3 +18,23 @@
     --lightpink: rgb(255, 227, 232);
     --pink: #FF039E;
 }
+button, .button {
+    padding: 10px 25px;
+    background-color: var(--pink);
+    font-size: 20px;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+button:hover, .button:hover {
+    background-color: var(--black);
+}
+button:active, .button:active{
+   transform: scale(0.98);
+}
+::selection {
+    background-color: var(--pink);
+    color: var(--white);
+}
