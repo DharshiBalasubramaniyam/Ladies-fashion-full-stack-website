@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    list-style-type: none;
+    color: var(--black);
+    outline: none;
+    
+}
+
+
+:root{
+    --white: white;
+    --black: rgb(75, 75, 75);
+    --grey: rgb(173, 173, 173);
+    --lightpink: rgb(255, 227, 232);
+    --pink: #FF039E;
+}
+
+body{
+    background-color: var(--lightpink);
+}
+
+
+.form_container{
+    background-color: whitesmoke;
+    width: 40%;
+    min-height: 450px;
+    margin: 20vh auto;
+    border-radius: 8px;
+    padding: 10px 10px 20px;
+    border: 2px solid var(--black);
+
+}
+
+@media (max-width:900px){
+    .form_container{
+        width: 80%;
+    }
+  }
+
+
+ .container{
+    background-color: whitesmoke;
+    width: 40%;
+    min-height: 350px;
+    margin: 25vh auto;
+    border-radius: 8px;
+    padding: 10px 10px;
+    border: 2px solid black;
+} 
+
+@media (max-width:900px){
+    .container{
+        width: 80%;
+    }
+  }
+
+
+h2{
+    text-align: center;
+    color: var(--pink);
+    margin-top: 1rem;
+    margin-bottom: 1.3rem;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    margin: 15px auto ;
+    position: relative;
+}
+.input input,.input .form{
+    
+    border-radius: 5px;
+    width: 90%;
+    box-sizing: border-box;
+    padding: 8px;
+    font-size: 12px;
+    border:1.5px solid var(--grey);
+    margin-bottom: 3px;
+    margin-left: 5%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.input span{
+    color: #ff0000;
+    font-size: 11px;
+    margin-left: 5%;
+
+    
+}
+
+.input input:hover{
+    border: 1.5px solid var(--pink) ;
+}
+
+.btn{
+    
+    width: 150px;
+    margin: 2rem auto 20px;
+    border-radius: 8px;
+    padding: 5px;
+    cursor: pointer;
+    border:1px solid var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    background-color: var(--pink);
+    
+}
+
+.btn:hover{
+    background-color: var(--lightpink);
+    }
+
+
+.login{
+    margin: 5px auto;
+    font-size: 14px;
+    text-align: center;
+    
+}
+
+.login a{
+    color:var(--pink) ;
+    text-decoration: none;
+
+}
+
