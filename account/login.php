@@ -17,7 +17,8 @@
 
         if (password_verify($password, $stored_hashed_password)) {
             if($row['user_type'] == 'admin'){
-                $_SESSION['admin_id'] = $row['id'];
+                $_SESSION['admin_id'] = $row['user_id'];
+                $_SESSION['admin_name'] = $row['username'];
                 $_SESSION['isLogged'] = true;
                
                 header('location:../admin/dashboard.php');

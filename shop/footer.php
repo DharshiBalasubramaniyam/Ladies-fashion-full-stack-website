@@ -13,11 +13,11 @@
 
    <div class="box">
       <h3>quick links</h3>
-      <a href="login.php">login</a>
-      <a href="register.php">register</a>
-      <a href="index.php">home</a>
       <a href="review.php">Reviews</a>
-      <a href="contact.php.php">Contact Us</a>
+      <a href="#contact">Contact Us</a>
+      <a href="../myaccount/wishlist.php">My wishlist</a>
+      <a href='../myaccount/cart.php'>My cart</a>
+      <a href='../myaccount/profile.php'>My Account</a>
    </div>
 
    <div class="box">

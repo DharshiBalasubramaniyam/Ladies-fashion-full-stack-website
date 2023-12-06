@@ -16,6 +16,10 @@
         
     }
 
+    $main_category_res = mysqli_query($connection, "SELECT * FROM main_category")
+                    or die('Category query failed');
+    $main_categories = mysqli_fetch_all($main_category_res, MYSQLI_ASSOC); 
+
 
 ?>
 
@@ -32,7 +36,7 @@
 
     <header>
         <div class="top-header">
-            <div class="logo"><a href="index.php"><img src="../uploadedImages/logo.png" alt="Pink-pearl-logo"></a></div>
+            <div class="logo"><a href="../shop/index.php"><img src="../uploadedImages/logo.png" alt="Pink-pearl-logo"></a></div>
             <form class="search laptop-setup " action="header.php" method='post'>
                 <input type="text" placeholder="Search entire fashion here" name='search-word'><button type="submit" name="search"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
@@ -64,14 +68,13 @@
                         echo "<li class='mobile-setup'><a href='../account/login.php'>Sign in</a></li>";
                     }
                 ?>
-                
-                <li><a href="./fashion/newin.php">New in</a> </li>
-                <li><a href="./fashion/officewear.php">Office wear</a> </li>
-                <li><a href="./fashion/casualwear.php">Casual wear</a> </li>
-                <li><a href="./fashion/partywear.php">Party wear</a> </li>
-                <li><a href="./fashion/footwear.php">Footwear</a> </li>
-                <li><a href="./fashion/accessories.php">Accessories</a> </li>
-                <li><a href="./fashion/beauty.php">Beauty</a> </li>
+
+                <?php
+                    foreach ($main_categories as $main) { 
+                        echo "<li><a href='../fashion/fashion.php?main=" . $main['main_category_id'] . "'>" . $main['category_name'] . "</a> </li>";
+                    }
+                ?>
+    
                 <?php
                     if (isset($_SESSION['isLogged']) && $_SESSION['isLogged']) {
                         echo "<li class='mobile-setup'><a href='../myaccount/orders.php'>My Account</a> </li>" . 

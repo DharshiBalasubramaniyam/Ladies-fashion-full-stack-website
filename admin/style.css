@@ -1,0 +1,530 @@
+button {
+    font-size: 12px;
+}
+::-webkit-scrollbar {
+    width: 10px;
+    /* height: 10px; */
+}
+
+/* ----------------------------------------------header styles------------------------------------------------------ */
+header {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 10vh;
+    padding: 10px 50px;
+    box-shadow: 0 0 5px var(--grey);
+    background-color: var(--white);
+    z-index: 1000;
+}
+header img {
+    width: 200px;
+    height: 47px;
+}
+header h1 {
+    font-size: 22px;color: var(--pink);
+}
+.toggle-menu{
+    display: none;
+}
+main {
+    min-height: 100vh;
+    width: 100%;
+}
+main .side-bar {
+    height: 90vh;
+    width: 300px;
+    background-color: var(--pink);
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    padding: 10px;
+}
+main .side-bar ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+main .side-bar ul li a {
+    display: inline-block;
+    padding: 12px 10px;
+    width: 100%;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--white);
+    transition: 0.3s;
+    border-radius: 5px;
+}
+main .side-bar ul li a span {
+    color: var(--white);
+}
+main .side-bar ul li a i {
+    font-size: 20px;
+    color: var(--white);
+}
+main .side-bar ul li a:hover,
+main .side-bar ul li a.active {
+    background-color: var(--white);
+}
+main .side-bar ul li a:hover span,
+main .side-bar ul li a:hover i,
+main .side-bar ul li a.active span ,
+main .side-bar ul li a.active i{
+    color: var(--pink);
+}
+main .container {
+    background-color: var(--white);
+    max-height: 90vh;
+    overflow-y: scroll;
+    width: calc(100% - 300px);
+    position: relative;
+    left: 300px;
+    top: 10vh;
+    padding: 10px 10px 25px;
+}
+main .container > h1, main .container > h1 span {
+    color: var(--pink);
+    margin-bottom: 5px;
+    text-align: center;
+}
+.products-container {
+    height: 90vh; overflow-y: scroll;
+}
+
+/* --------------------------------------------------dashboard styles-------------------------------------------------------------- */
+.dashboard .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(270px, 1fr));
+    grid-gap:2rem;
+    margin-top:1rem;
+}
+.dashboard .card-single{
+    display:flex;
+    justify-content:space-between;
+    background:var(--white);
+    box-shadow: 0 0 20px var(--grey);
+    padding:2rem;
+    border-radius:2px;
+    transition: 0.3s;
+}
+.dashboard .card-single:hover{
+    transform: translateY(-7px);
+}
+.dashboard .card-single div i{
+    font-size:2.2rem;
+     color:var(--pink);
+}
+.dashboard .recent-grid{
+    margin-top:3.5rem;
+    display:flex;
+    flex-wrap: wrap;gap: 30px;
+}
+.dashboard .recent{
+    background:#fff;
+    border-radius: 5px;
+    flex: 1 1 400px;
+}
+.dashboard .card-header,
+.dashboard .card-body{
+    padding:1rem 0;
+}
+.dashboard .card-header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:2px solid var(--grey);
+}
+/* --------------------------------------------------products styles---------------------------------------------------- */
+a.disabled, a.disabled button {
+    opacity: 0.4;
+    pointer-events: none;cursor:not-allowed;
+}
+.products-container .actions{
+    width: 100%;
+    max-width: 768px;
+    display: flex;
+    gap: 0;
+    padding: 3px 0;
+    margin-bottom: 5px;
+}
+.products-container .actions  button {
+    border-radius: 0;
+    transition: 0.3s;
+    font-size: 16px;
+    width: 40px;
+}
+.products-container .actions  button:hover {
+    background-color: var(--pink);
+}
+.products-container .actions  button i {
+    color: var(--white);
+}
+.products-container .actions  input,
+.products-container .actions select {
+    padding: 7px 10px;
+    width: 100%;
+    background: transparent;
+    border: 1.5px solid var(--grey);
+    font-size: 16px;
+}
+.products-container .actions select {
+    width: calc(100% - 40px);
+}
+.products-container .product-list,
+.dashboard .order-list {
+    width: 100%;
+}
+
+.product-list table,
+.order-list table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+    cursor:pointer;
+    box-shadow: 0 0  20px var(--grey);
+}
+.products-container table td,
+.products-container table th,
+.order-list table th, .order-list table td{
+    text-align: center;
+    padding: 6px;
+}
+.products-container  table td{
+    font-size: 15px;
+}
+.products-container .product-list table th,
+.order-list table th  {
+    background-color: var(--pink);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.products-container table tr:nth-of-type(even),
+.order-list table tr:nth-of-type(even)  {
+    background-color: var(--lightpink);
+}
+.products-container .progress {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.products-container .progress > div {
+    flex: 1;
+}
+
+/* --------------------------------------------------view product styles---------------------------------------------------- */
+.products-container .h1 {
+    display: flex;
+    align-items: center;
+}
+.products-container .h1 span {
+    flex: 1;
+}
+.products-container .detail-box {
+    display: flex;
+    width: 100%;
+}
+.products-container .detail-box img{
+    height: 500px;
+    width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px var(--grey);
+}
+.products-container .detail-box  form {
+    padding: 0 10px;
+    width: 100%;
+}
+.products-container .detail-box  form .input-box {
+    width: 100%;
+    margin: 7px 0;
+}
+.products-container .detail-box  form .input-box > div {
+    display: flex; gap: 10px;
+}
+.products-container .detail-box  form .input-box table {
+    width: 100%;
+}
+.products-container .detail-box   form .input-box input,
+.products-container .detail-box form .input-box textarea,
+.products-container .detail-box form .input-box select{
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 2px solid var(--grey);
+    font-size: 16px;
+}
+.products-container .detail-box form .input-box table {
+   border-collapse: collapse;
+}
+.products-container .detail-box form .input-box table th {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.products-container .detail-box form .input-box table td input {
+    width: 80px;
+}
+input:focus,
+textarea:focus,
+select:focus{
+    border: 2px solid var(--pink);
+}
+.products-container .detail-box form .input-box table td button {
+    display: inline;
+}
+.products-container .detail-box  small{
+    color: red;
+}
+.products-container .detail-box label {
+    font-weight: 600;
+}
+.products-container .detail-box  form .input-box .box {
+    display: inline-block;
+    padding: 3px 5px;
+    align-items: center; border-radius: 5px;
+    margin-top: 5px;
+    margin-right: 5px;
+    background-color: var(--lightpink);
+}
+.products-container .detail-box  form .input-box .box button {
+    background-color: transparent;
+}
+.products-container .detail-box  form .input-box .box button:hover i{
+    color: var(--pink);
+}
+
+h1 button {
+    font-size: 16px;
+    padding: 7px 10px;
+}
+
+
+
+/* ----------------------------------------view order styles------------------------------------------------------ */
+
+form p span {
+    display: inline-block;
+    width: 175px;
+    font-weight: 600;
+}
+.orders-list table{
+    width: 100%;
+    max-width: 500px;
+    border-collapse: collapse;
+}
+.orders-list table th {
+    font-weight: 600;
+}
+.product-list table td span,
+.order-list table td span {
+    display: inline-block;
+    padding: 5px;
+    width: 100px;
+    border-radius: 15px;
+}
+.product-list table td span.shipped,
+.order-list table td span.shipped {
+    background-color: rgb(211, 211, 255);
+    color: blue;
+}
+.product-list table .pending, .order-list table td span.pending  {
+    background-color: rgb(255, 255, 213);
+    color: rgb(255, 115, 0);
+}
+.product-list table .delivered, .order-list table td span.delivered  {
+    background-color: rgb(218, 255, 218);
+    color: green;
+}
+.product-list table .cancelled, .order-list table td span.cancelled  {
+    background-color: rgb(255, 178, 178);
+    color: red;
+}
+
+
+/* ------------------------------------------form styles---------------------------------------- */
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;flex-direction: column;gap: 15px;
+}
+form > div {
+    width: 100%;
+    max-width: 500px;
+    margin: 0;
+}
+form > div input,  form > div select,  form > div textarea{
+    width: 100%;
+    max-width: 500px;
+    padding: 7px;
+    border-radius: 3px;
+    border: 2px solid var(--grey);
+    font-size: 16px;
+}
+.form button {
+    width: 190px;font-size: 16px;padding: 7.5px 15px;
+}
+.form small {
+    color:red;
+}
+.form .row {
+    display: flex;gap: 6px;
+}
+.form table {
+    width: 100%;
+    margin: 10px 0;
+}
+.form table td input {
+    width: 75px;
+}
+
+
+/* -------------------------------------------messages styles----------------------------------------------------------- */
+.container .top-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.container .top-header button.unactive {
+    background-color: transparent;
+    color: var(--pink);
+}
+.container .top-header button.unactive:hover {
+    background-color: transparent;
+    color: var(--pink);
+}
+.container .messages-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 380px);
+    justify-content: center;
+    margin-top: 20px;
+    gap: 15px;
+}
+.container .messages-wrapper .message-box {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px var(--grey);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.container .messages-wrapper .message-box:hover {
+    transform: translateY(-5px);
+}
+.container .messages-wrapper .message-box .box_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;padding: 10px;
+    border-bottom: 2px solid var(--grey);
+}
+.container .messages-wrapper .message-box .box_top .profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.container .messages-wrapper .message-box .box_top .profile i {
+    background-color: var(--pink);
+    color: var(--white);
+    border-radius: 50%;
+    padding: 10px 12px;
+}
+.container .messages-wrapper .message-box .box_top .profile .name_user {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+.container .messages-wrapper .message-box .box_top .profile .name_user span {
+    font-size: 13px;
+}
+.container .messages-wrapper .message-box .comments {
+    padding: 10px 10px 5px; font-size: 13px;flex: 1;
+}
+.container .messages-wrapper .message-box .date {
+    padding: 0 10px 10px; font-size: 13px;
+    text-align: right;
+}
+
+/* footer */
+footer {
+    /* color: var(--black); */
+    text-align: center;
+    font-size: 14px;
+}
+
+@media all and (max-width:768px) {
+    header {
+        padding: 10px 10px;
+    }
+    header img {
+        width: 100px;
+        height: 30px;
+    }
+    header h1 {
+        font-size: 15px;
+        text-align: center;
+    }
+    .dashboard .recent{
+        width: 100%;
+    }
+    .products-container .actions .action-box{
+        position: relative;
+        width: 100%;
+    }
+    .products-container .actions input,
+    .products-container .actions select {
+        padding: 4px 5px;
+        font-size: 14px;
+    }
+    .products-container .product-list, .dashboard .order-list {
+        overflow-x: scroll;
+    }
+    .products-container table,  .order-list table {
+        width: 768px;
+    }
+    .products-container table button{
+        width: 140px;
+    }
+    .products-container .progress >div button {
+        display: none;
+    }
+    .container .messages-wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+@media all and (max-width:1000px) {
+    .products-container .detail-box {
+        flex-direction: column;
+    }
+    .products-container .detail-box img{
+        width: 100%;
+        max-width: 500px;
+        height: 350px;
+    }
+    .products-container .detail-box form .input-box {
+        overflow-x: scroll;
+    }
+    .products-container .detail-box form .input-box table {
+        width: 600px;
+    }
+    .toggle-menu {
+        font-size: 15px;
+        display: inline-block;
+    }
+    main .side-bar {
+        left: -100%;
+        z-index: 1000;
+        transition: 0.5s;
+    }
+    main .side-bar.open {
+        left: 0;
+    }
+    main .container {
+        width: 100%;
+        left: 0;
+        /* z-index: 1000; */
+    }
+} 

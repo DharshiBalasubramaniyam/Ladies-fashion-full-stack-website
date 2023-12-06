@@ -1,0 +1,646 @@
+.myaccount {
+    min-height: 100vh;
+    width: 100%;
+    padding: 15vh 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+button {
+    font-size: 16px;
+    
+}
+.myaccount .header {
+    background-color: var(--lightpink);
+    width: 100%;
+    padding: 10px 0;
+}
+.myaccount .content {
+    width: 100%;
+    padding: 20px 8%;
+}
+.myaccount .header h1, .myaccount .header p {
+    width:100%; text-align: center;
+}
+.myaccount .options {
+    font-size: 15px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.myaccount .options span a{
+    display: inline-block;
+    padding: 5px 0;
+    transition: 0.3s;
+}
+.myaccount .options span a:hover{
+    color: var(--pink);
+}
+.myaccount .options span a.active{
+    color: var(--pink);
+    border-bottom: 2px solid var(--grey);
+}
+
+
+/* ------------------------- orders styles -----------------------------------------*/
+.myaccount ul {
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 0.5fr));
+    grid-gap: 15px;
+} 
+.myaccount ul li {
+    flex: 1 1 400px;
+    box-shadow: 0 0 25px var(--lightpink);
+    border-radius: 5px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.myaccount ul li:hover {
+    transform: translateY(-5px);
+}
+.myaccount ul li .head {
+    background-color: var(--lightpink);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+.myaccount ul li .head .date {
+    flex: 1;
+    /* color: var(--white); */
+}
+.myaccount ul li .head .delivered {
+    padding: 3px 10px;
+    background-color: rgb(190, 255, 190);
+    color: green;
+}
+.myaccount ul li .head .pending {
+    padding: 3px 10px;
+    background-color: rgb(255, 191, 191);
+    color: red;
+}
+.myaccount ul li .head .shipped {
+    padding: 3px 10px;
+    background-color: rgb(255, 238, 190);
+    color: rgb(128, 96, 0);
+}
+.myaccount ul li .head button {
+    padding: 5px 10px;
+    background-color: transparent;
+    color: red;
+    border: none;
+    cursor: pointer;
+}
+.myaccount ul li .content{
+    padding: 10px;
+}
+.myaccount ul li  span{
+    font-weight: 600;
+}
+.myaccount ul li table,
+.checkout-wrapper .summary-wrapper .summary-box table {
+    border: none;
+    width: 100%;
+    margin: 5px 0 10px;
+}
+.myaccount ul li table td,
+.checkout-wrapper .summary-wrapper .summary-box table td {
+    width: 33%;
+    padding: 2px 5px;
+    border-bottom: 1px solid rgb(197, 197, 197);
+}
+.myaccount ul li .item {
+    height: 100px;
+    width: 250px;
+    background-color: rgb(207, 156, 255);
+}
+.myaccount ul li .item img{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+.myaccount .empty-order-history {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.myaccount .empty-order-history p {
+    margin: 20px 0;
+    text-align: center;
+}
+input::placeholder{
+    color: rgb(193, 193, 193);
+}
+
+/* --------------------------------------------------profile styles--------------------------------------------- */
+.myaccount form {
+    width: 100%;
+    max-width: 500px;
+}
+.myaccount form .input-box {
+    width: 100%;
+    margin: 7px 0;
+}
+.myaccount form .input-box input,
+.myaccount form .input-box textarea,
+.checkout-wrapper form .row .input-box input, 
+.checkout-wrapper form .row .input-box select{
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 2px solid var(--grey);
+    font-size: 16px;
+}
+.myaccount form .input-box input:focus,
+.myaccount form .input-box textarea:focus,
+.checkout-wrapper form .row .input-box input:focus{
+    border: 2px solid var(--pink);
+}
+.myaccount small, .checkout-wrapper form small{
+    color: red;
+}
+/* button {
+    padding: 10px 15px;
+    background-color: var(--black);
+    font-size: 16px;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+button:hover {
+    background-color: var(--pink);
+} */
+.myaccount > h4 {
+    margin-top: 8px;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: 0.3s;
+}
+.myaccount > h4:hover {
+    color: var(--pink);
+}
+.myaccount .change-pass-form button{
+    margin-top: 5px;
+}
+
+/* -----------------------------------------------------------wishlist styles---------------------------------- */
+.content.wishlist-wrapper,
+.content .cart-items-wrapper{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-gap: 20px;
+    justify-content: center;
+}
+.content .wishlist-card,
+.content .cart-card {
+    position: relative;
+    box-shadow: 0 0 20px var(--grey);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.3s;
+}
+.content .wishlist-card:hover img,
+.content .cart-card:hover img{
+    transform: scale(0.98);
+}
+.content .wishlist-card img,
+.content .cart-card img{
+    width: 100%;
+    height: 300px;
+    transition: 0.3s;
+}
+.content .wishlist-card div {
+    font-size: 18px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+}
+.content .wishlist-card button:not(.remove-item) {
+    width: 100%;
+    margin-top: 7px;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.content .wishlist-card button i {
+    color: var(--white);
+}
+.content .wishlist-card .remove-item,
+.content .cart-card .remove-item{
+    padding: 0;
+    position: absolute;
+    top: 10px;right: 15px;
+    height: 35px;
+    width: 35px;
+    display: flex;align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    
+}
+.content .wishlist-card .remove-item i,
+.content .cart-card .remove-item i{
+    color: var(--white);
+}
+
+/*------------------------------wishlist preview styles---------------------------------------------- */
+.products-preview {
+    z-index: 2000;
+}
+
+.products-preview {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+}
+
+.products-preview .preview {
+    display: none;
+    padding: 15px;
+    text-align: center;
+    background: #fff;
+    position: relative;
+    margin: 1rem;
+    width: 30em;
+}
+
+.products-preview .preview.active {
+    display: inline-block;
+}
+
+.products-preview .preview img {
+    max-width: 100%;
+    height:15em;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.products-preview .preview .fa-times {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    cursor: pointer;
+    color: var(--pink); 
+    font-size: 1.5rem;
+}
+
+.products-preview .preview .fa-times:hover {
+    transform: rotate(90deg);
+}
+
+.products-preview .preview .name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-transform:uppercase;
+}
+
+.products-preview .preview .description {
+    font-size: 1.1em;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+}
+
+.products-preview .preview .price {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--pink);
+    margin-bottom: 1rem;
+}
+
+.products-preview .preview form {
+    display: flex;
+    flex-direction: column;
+}
+
+.products-preview .preview form label {
+    margin-bottom: 0.4rem;
+    font-size: 1.4rem;
+}
+
+.products-preview .preview form input,
+.products-preview .preview form select {
+    margin-bottom: 1rem;
+    padding: 0.3rem;
+    font-size: 1.1em;
+    width: 15rem;
+    margin: 0 auto; 
+    text-transform: capitalize;
+}
+
+.products-preview .preview form button {
+    margin-top: 20px;
+    align-self: center;
+    width: 250px;
+    border-radius: 0;
+}
+
+.products-preview .preview form button i{
+    color: var(--white);
+}
+
+/* ------------------------------cart styles ----------------------------------------- */
+.content .total {
+    background-color: bisque;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+.content .total span {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.myaccount .cart-items-wrapper .cart-card h3 {
+    text-align: center;
+    width: 100%;
+}
+.myaccount .cart-items-wrapper .cart-card form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+.myaccount .cart-items-wrapper .cart-card  form input {
+    width: 50px;
+    padding: 4px 7px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 2px solid var(--grey);
+    font-size: 18px;
+}
+.myaccount .cart-items-wrapper .cart-card  form button#update {
+    padding: 5px 10px;
+    margin-left: 15px;
+    opacity: 0.25;
+    pointer-events: none;
+}
+.content .cart-card .remove-item{
+    top: 15px;right: 15px;
+}
+
+
+/* --------------------checkout styles------------------------------------------------ */
+.checkout .header{
+    background-color: var(--lightpink);
+    width: 100%;
+    padding: 10px 25px;
+}
+.checkout .progress{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.checkout .progress .progress-bar {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content:space-between;
+}
+.checkout .progress .line {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    border-radius: 10px;
+    z-index: 1;
+    top: 45%;
+    left: 0;
+    background-color: rgb(203, 203, 203);
+}
+.checkout .progress .progress-bar.payment .line:after {
+    background-color: var(--pink);
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 5px;
+    border-radius: 10px;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+.checkout .progress .progress-bar.success .line:after {
+    background-color: var(--pink);
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    border-radius: 10px;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+.checkout .progress span {
+    text-align: center;
+    background-color: var(--white);
+    z-index: 2;
+    padding: 15px;
+    border-radius: 50%;
+    /* box-shadow: 0 0 15px var(--lightpink); */
+}
+.checkout .progress span i {
+    background-color: rgb(203, 203, 203);
+    color: var(--white);
+    padding: 7px;
+    border-radius: 50%;
+}
+.checkout .progress span small{
+    color: rgb(203, 203, 203);
+}
+.checkout .progress span:first-of-type i,
+.checkout .progress .progress-bar.payment span:nth-of-type(2) i,
+.checkout .progress .progress-bar.success i{
+    background-color: var(--pink);
+    color: var(--white);
+}
+.checkout  .progress span:first-of-type small, 
+.checkout .progress .progress-bar.payment span:nth-of-type(2) small,
+.checkout .progress .progress-bar.success span small {
+    color: var(--pink);
+}
+
+.checkout-wrapper {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 15px;
+}
+
+.checkout-wrapper form{
+    width: 60%;
+    padding:  0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.checkout-wrapper form .row .input-box input, 
+.checkout-wrapper form .row .input-box select{
+    border: 1px solid rgb(186, 186, 186);
+}
+.checkout-wrapper .summary-wrapper{
+    width: 40%;
+    height: 100%;
+    padding: 15px;
+    display: flex;
+    align-items: flex-start;justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    
+}
+.checkout-wrapper .summary-wrapper .summary-box {
+    background-color: var(--white);
+    width: 80%;
+    box-shadow: 0 0 20px var(--grey);
+    padding: 15px;
+}
+.checkout-wrapper .summary-wrapper .summary-box h3 {
+    padding: 7px 0;
+    border-bottom: 1px solid var(--pink);
+    color: var(--pink);
+}
+.checkout-wrapper .summary-wrapper .summary-box a  {
+    text-decoration: underline;
+}
+.checkout-wrapper .summary-wrapper .summary-box a:hover  {
+    color: var(--pink);
+}
+.checkout-wrapper form .row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    gap: 15px;
+    margin: 6px 0;
+}
+.checkout-wrapper form .row .input-box {
+    width: 100%;
+}
+.checkout-wrapper form .row .input-box label span {
+    font-size: 10px;
+    color: red;
+}
+.checkout-wrapper form .row .input-box input {
+    width: 100%;
+    font-size: 15px;
+}
+.checkout-wrapper form button {
+    margin-top: 15px;
+}
+
+.checkout-wrapper form.payment > .row,
+.checkout-wrapper form > div{
+    width: 80%;
+}
+
+/* -------------------------------order success styles---------------------------------- */
+.order-success-box {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;justify-content: center;flex-direction: column;
+}
+.order-success-box img{
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+
+}
+.order-success-box .btns{
+    display: flex;
+}
+
+@media all and (max-width: 900px) {
+    .myaccount{
+        padding: 10vh 0 10px;
+    }
+    .myaccount .content {
+        padding: 12px 3%;
+    }
+    .myaccount form {
+        padding: 0 10px;
+    }
+    .checkout-wrapper .progress span {
+        
+        padding: 12px;
+        
+    }
+    .checkout-wrapper .progress span i {
+        font-size: 10px;
+    }
+    .checkout-wrapper .progress span small{
+        font-size: 11px;
+    }
+    .checkout-wrapper {
+        flex-direction: column;
+    }
+    .checkout-wrapper form{
+        width: 100%;
+    }
+    .checkout-wrapper .summary-wrapper{
+        width: 100%;
+        margin-top: 15px;
+    }
+    .checkout-wrapper .summary-wrapper .summary-box {
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 600px) {
+   
+    .myaccount h1{
+        font-size: 21px;
+    }
+    .myaccount .options {
+        font-size: 15px;
+        gap: 15px;
+    }
+    .myaccount ul {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    } 
+    .content.wishlist-wrapper,
+    .content .cart-items-wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 20px;
+    }
+    .myaccount ul li *{
+        font-size: 14px;
+    
+    }
+    .checkout .header h2{
+        font-size: 20px;
+    }
+    .checkout-wrapper form .row {
+        flex-direction: column;
+    }
+}
+

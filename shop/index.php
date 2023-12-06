@@ -1,3 +1,25 @@
+<?php
+
+  include('../main-header/header.php');
+  if(isset($_POST['msg'])){
+    unset($_SESSION['message']);
+  }
+
+  // display messages
+  if(isset($_SESSION['message'])){
+        echo '
+            <form class="message-wrapper" action="index.php" method="post">
+                <div class="message">
+                    <span>' . $_SESSION['message'] . '</span>
+                    <button class="fas fa-times" name="msg"></button>
+                </div>
+            </form>
+        
+        ';
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +34,7 @@
 </head>
 <body>
 
-    <?php include('../main-header/header.php') ?>
+    <?php  ?>
 
     <section class="home" id="home">
         <div class="swiper home-slider">
@@ -21,7 +43,7 @@
                   <div class="content">
                     <span>OFFICE WEAR</span>
                     <h3>Work in Style</h3>
-                    <a href="" class="button">Shop Now</a>
+                    <a href="../fashion/fashion.php?main=1" class="button">Shop Now</a>
                   </div>
                 </div>
 
@@ -29,7 +51,7 @@
                   <div class="content">
                     <span>CASUAL WEAR</span>
                     <h3>Comfy | Unique | Stylish</h3>
-                    <a href="" class="button">Shop Now</a>
+                    <a href="../fashion/fashion.php?main=2" class="button">Shop Now</a>
                   </div>
                 </div>
 
@@ -37,7 +59,7 @@
                   <div class="content">
                     <span>PARTY WEAR</span>
                     <h3>Unleash your style and shine at every event</h3>
-                    <a href="" class="button">Shop Now</a>
+                    <a href="../fashion/fashion.php?main=3" class="button">Shop Now</a>
                   </div>
                 </div>
 
@@ -45,7 +67,7 @@
                   <div class="content">
                     <span>FOOT WEAR</span>
                     <h3>Elevate your look</h3>
-                    <a href="" class="button">Shop Now</a>
+                    <a href="../fashion/fashion.php?main=5" class="button">Shop Now</a>
                   </div>
                 </div>
           
@@ -53,7 +75,7 @@
                   <div class="content">
                     <span>ACCESSORIES</span>
                     <h3>Discover a world of trendy accessories</h3>
-                    <a href="" class="button">Shop Now</a>
+                    <a href="../fashion/fashion.php?main=4" class="button">Shop Now</a>
                   </div>
                 </div>
 
@@ -61,7 +83,7 @@
                   <div class="content">
                     <span>BEAUTY PRODUCTS</span>
                     <h3>Enhance your natural beauty</h3>
-                    <a href="" class="button">Shop Now</a>
+                    <a href="../fashion/fashion.php?main=6" class="button">Shop Now</a>
                   </div>
                 </div>
           </div>
@@ -81,7 +103,7 @@
         <img src="images/frocks.webp" alt="">
           <div class="b-content">
           <h3>Our Frocks</h3>
-          <a href="" class="button">Shop Now</a>
+          <a href="../fashion/fashion.php?sub=32" class="button">Shop Now</a>
         </div>
       </div>
 
@@ -89,7 +111,7 @@
         <img src="images/blouse.webp" alt="">
         <div class="b-content">
         <h3>Our Tops</h3>
-          <a href="" class="button">Shop Now</a>
+          <a href="../fashion/fashion.php?sub=28" class="button">Shop Now</a>
         </div>
       </div>
 
@@ -97,15 +119,15 @@
         <img src="images/lehenga.jpg" alt="" class="img">
         <div class="b-content">
         <h3>Our Lehengas</h3>
-          <a href="" class="button">Shop Now</a>
+          <a href="../fashion/fashion.php?sub=37" class="button">Shop Now</a>
         </div>
       </div>
 
       <div class="banner">
           <img src="images/makeup.avif" alt="">
           <div class="b-content">
-          <h3>Our Makeup Products</h3>
-            <a href="" class="button">Shop Now</a>
+            <h3>Our Makeup Products</h3>
+            <a href="../fashion/fashion.php?sub=49" class="button">Shop Now</a>
           </div>
       </div>
 
@@ -113,7 +135,7 @@
           <img src="images/jewels.jpeg" alt="">
           <div class="b-content">
           <h3>Our jewelleries</h3>
-            <a href="" class="button">Shop Now</a>
+            <a href="../fashion/fashion.php?sub=45" class="button">Shop Now</a>
           </div>
       </div>
 
@@ -121,7 +143,7 @@
         <img src="images/sandals.webp" alt="">
         <div class="b-content">
           <h3>Our Sandals</h3>
-          <a href="" class="button">Shop Now</a>
+          <a href="../fashion/fashion.php?sub=41" class="button">Shop Now</a>
         </div>
       </div>
 
@@ -148,23 +170,23 @@
             <div class="review_box">
                 <div class="box_top">
                     <div class="profile">
-                        <div class="profile_img">
+                        <span class="profile_img">
                           <i class="fa-solid fa-user"></i>
-                        </div>
+                        </span>
 
-                        <div class="name_user">
-                            <strong><?php echo $row['username']; ?></strong>
+                        <span class="name_user">
+                            <span style="font-weight: 600;"><?php echo $row['username']; ?></span>
                             <span><?php echo $row['email']; ?></span>
-                        </div>
+                        </span>
                     </div>
                     
 
                     <div class="reviews">
-                      <i class="fa-solid fa-star" style="color: #ffe3e8;"></i>
-                      <i class="fa-solid fa-star" style="color: #ffe3e8;"></i>
-                      <i class="fa-solid fa-star" style="color: #ffe3e8;"></i>
-                      <i class="fa-solid fa-star" style="color: #ffe3e8;"></i>
-                      <i class="fa-solid fa-star" style="color: #ffe3e8;"></i>
+                      <i class="fa-solid fa-star" style="color: #FF039E;"></i>
+                      <i class="fa-solid fa-star" style="color: #FF039E;"></i>
+                      <i class="fa-solid fa-star" style="color: #FF039E;"></i>
+                      <i class="fa-solid fa-star" style="color: #FF039E;"></i>
+                      <i class="fa-solid fa-star" style="color: #FF039E;"></i>
                     </div>
                 </div>
 
@@ -173,7 +195,7 @@
                 </div>
 
                 <div class="date">
-                  <span><?php echo $row['date']; ?></span>
+                  <?php echo $row['date']; ?>
                 </div>
 
 

@@ -11,11 +11,13 @@ include '../database/dbconnection.php';
   
       $success=mysqli_query($connection,"insert into messages (name,email,message) VALUES ('$name','$email','$message')") or die ('query failed'. mysqli_error($conn));
       if($success){
-      $successful_message = 'Message sent successfully!';
-    }
-    else{
-      $failed_message='Message failed!!!!';
-    }
+        $_SESSION['message'] = "Message sent successfully!";
+        // header('location: index.php');
+        echo "<script>window.location.href = 'index.php'</script>";
+      }
+      else{
+        $failed_message='Message failed!!!!';
+      }
    
   }
 
@@ -30,12 +32,16 @@ include '../database/dbconnection.php';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="./main-header//header.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <section class="container">
 
 
-<form action="" class="form" method="post">
+<form action="" class="form" method="post" id="contact">
     <h2>Contact Us</h2>
 
     <div class="input">

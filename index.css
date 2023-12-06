@@ -27,6 +27,13 @@ button, .button {
     cursor: pointer;
     transition: 0.3s;
     border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+button i {
+    color: var(--white);
 }
 button:hover, .button:hover {
     background-color: var(--black);
@@ -38,3 +45,38 @@ button:active, .button:active{
     background-color: var(--pink);
     color: var(--white);
 }
+
+.message-wrapper {
+    width: 100%;
+    z-index: 2000;
+    position: fixed;
+    top: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+ }
+.message {
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--black);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 50px var(--grey);
+}
+ 
+ .message span {
+    display: inline-block;
+    flex: 1;
+    color: var(--white);
+    text-align: center;
+ }
+ 
+.message button {
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--white);
+ }

@@ -1,0 +1,417 @@
+:root{
+    --border : 1px solid rgb(255, 227, 232);
+}
+
+html{
+    /* font-size: 62.5%; */
+    overflow-x: hidden;
+}
+
+.title{
+    font-size: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    color: var(--pink);
+ }
+ 
+ .sub_header {
+    padding: 15vh 8% 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin:0 auto;
+    position: relative;
+ }
+
+.sub_header .flex .sub-logo{
+    font-size: 32px;
+    color:var(--pink);
+ }
+
+ .sub_header .items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub_header .items div {
+    display: flex;
+}
+
+
+.sub_header .items div button {
+    font-size: 17px; 
+    color: var(--pink); 
+    text-transform: capitalize; 
+    text-decoration: none;
+    margin: 2rem 0.5em;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 4px 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;    
+}
+.sub_header .items div button.active {
+    border-bottom: 2px solid var(--pink);
+}
+
+#menu-btn {
+    font-size: 2.5rem;
+    color: var(--pink);
+    cursor: pointer;
+    display: none;
+}
+
+.products-preview .preview #menu-btn:hover {
+    transform: rotate(90deg);
+}
+
+@media all and (max-width:900px) {
+    .sub_header {
+        flex-direction: column;
+        padding:8vh 1% 0;
+    }
+    .title {
+        font-size: 20px;
+        text-align: center;
+    }
+    .sub_header .items {
+        width: 100%;
+        justify-content: center;
+    }
+    .sub_header .items div {
+        width: 768px;
+        justify-content: left;
+        overflow-x: scroll;
+        border-bottom: 1px solid var(--grey);
+
+    }
+    .sub_header .items div button{
+        width: max-content;
+        background-color: var(--white);
+        border: 1.5px solid var(--pink);
+        border-radius: 5px;
+        padding: 4px 7px;
+        margin: 1rem 0.5em;
+        font-size: 15px;
+    }
+    .sub_header .items div button.active{
+        background-color: var(--pink);
+        color: var(--white);
+    }
+    .products{
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+}
+
+
+
+.empty{
+    text-align: center;
+    color: var(--pink);
+    font-size: 15px;
+    margin-top: 2rem;
+ }
+.message-wrapper {
+    width: 100%;
+    z-index: 2000;
+    position: fixed;
+    top: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+ }
+.message {
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--black);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 50px var(--grey);
+}
+ 
+ .message span {
+    display: inline-block;
+    flex: 1;
+    color: var(--white);
+    text-align: center;
+ }
+ 
+.message button {
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--white);
+ }
+ 
+
+ /* -------------------------------front categories styles--------------------------------------------------------------------------- */
+.Categories{
+    padding: 15px 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    
+ }
+ 
+
+.Categories .box {
+    flex: 0 1 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px var(--grey);
+    transition: 0.3s;
+    padding: 10px;
+}
+
+.Categories .box:hover {
+    transform: translateY(-10px);
+}
+
+.Categories .box .image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.Categories .box .option_btn {
+    background-color: var(--pink);
+    color: var(--white);
+    border: none;
+    width: 20rem;
+    height: 5rem;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    margin-top: 1rem;
+    transition: 0.3s; cursor: pointer;
+}
+.Categories .box .option_btn:hover {
+    background-color: var(--black);
+}
+
+ /* -------------------------------front categories styles end--------------------------------------------------------------------------- */
+
+
+ /* --------------------------------product box container styles--------------------------------------------------------- */
+
+.products{
+    margin-top: 1rem ;
+    margin-bottom: 1rem;
+}
+ 
+.products .box-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-gap: 20px;
+    justify-content: center;
+ }
+
+ @media all and (max-width:600px) {
+    .products {
+        padding: 0 20px;
+    }
+    .products .box-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+ }
+ 
+.products .box-container .box {
+    position: relative;
+    box-shadow: 0 0 20px var(--grey);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.3s;cursor: pointer;
+}
+
+.products .box-container .box:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+    border-color: var(--pink);
+}
+
+.products .box-container .box .image {
+    width: 100%;
+    height: 300px;
+    transition: 0.3s;
+}
+.products .box-container .box:hover .image {
+    transform: scale(0.98);
+}
+
+.products .box-container .box .name{
+    font-size: 18px;
+    text-transform: uppercase;
+    width: 100%;margin-top: 5px;text-align: center;
+ }
+  
+.products .box-container .box .price{
+    padding-top: 0.5rem;
+    font-size: 18px;
+    font-weight: bold;
+ } 
+
+.products .box-container .box button,
+.products-preview .preview form button{
+    width: 100%;
+    margin-top: 7px;
+    font-size: 17px;
+    padding: 9px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.3s;cursor: pointer;
+    background-color: var(--pink);
+    color: var(--white);border: none;
+}
+.products .box-container .box button:hover,
+.products-preview .preview form button:hover {
+    background-color: var(--black);
+}
+
+.products .box-container .box .cart-btn i,
+.products .box-container .box .wishlist-btn i{
+    color: var(--white);
+    font-size: 15px; 
+}
+
+.products .box-container .box .cart-btn i{
+    /* margin-right: 10px; */
+    color: var(--white);
+}
+
+.products .box-container .box .wishlist-btn {
+    position: absolute;
+    top:10px;
+    right: 15px;
+    background-color: var(--pink);  
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+/* Pop up styling */
+.products-preview {
+    z-index: 2000;
+}
+
+.products-preview {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+}
+
+.products-preview .preview {
+    display: none;
+    padding: 15px;
+    text-align: center;
+    background: #fff;
+    position: relative;
+    margin: 1rem;
+    width: 30em;
+}
+
+.products-preview .preview.active {
+    display: inline-block;
+}
+
+.products-preview .preview img {
+    max-width: 100%;
+    height:15em;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.products-preview .preview .fa-times {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    cursor: pointer;
+    color: var(--pink); 
+    font-size: 1.5rem;
+}
+
+.products-preview .preview .fa-times:hover {
+    transform: rotate(90deg);
+}
+
+.products-preview .preview .name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-transform:uppercase;
+}
+
+.products-preview .preview .description {
+    font-size: 1.1em;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+}
+
+.products-preview .preview .price {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--pink);
+    margin-bottom: 1rem;
+}
+
+.products-preview .preview form {
+    display: flex;
+    flex-direction: column;
+}
+
+.products-preview .preview form label {
+    margin-bottom: 0.4rem;
+    font-size: 1.4rem;
+}
+
+.products-preview .preview form input,
+.products-preview .preview form select {
+    margin-bottom: 1rem;
+    padding: 0.3rem;
+    font-size: 1.1em;
+    width: 15rem;
+    margin: 0 auto; 
+    text-transform: capitalize;
+}
+
+.products-preview .preview form button {
+    margin-top: 20px;
+    align-self: center;
+    width: 250px;
+    border-radius: 0;
+}
+
+.products-preview .preview form button i{
+    color: var(--white);
+}
+
+
+@media all and (max-width:1200px) {
+    .sub_header {
+        padding: 15vh 1% 0;
+    }
+}
+
+
+
