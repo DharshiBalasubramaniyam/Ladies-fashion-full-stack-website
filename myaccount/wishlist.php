@@ -2,6 +2,7 @@
 
     include('../main-header/header.php');
     if (!isset($_SESSION['user_id'])) {
+        $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
         header('location:../account/login.php');exit();
     }
 
@@ -161,32 +162,52 @@
                                         $sizeIdQuery = "select distinct size_id from product_stock where product_id = " . $product['product_id'];
                                         $sizeIdResult = mysqli_query($connection, $sizeIdQuery );
 
-                                        echo "<select name='size' id='size' required><option value='select'>Select size</option>";
-                                        while($sizeId = mysqli_fetch_assoc($sizeIdResult)) {
-                                            $sizeQuery = "select * from product_size where size_id = " . $sizeId['size_id'];
-                                            $sizeResult = mysqli_query($connection, $sizeQuery);
-                                            $size = mysqli_fetch_assoc($sizeResult);
-                                            echo "<option value='" . $size['size_id'] . "'>" . $size['size_name'] . "</option>";
-                                                                    
-                                        };
-                                        echo "</select>";
+                                        if (mysqli_num_rows($sizeIdResult)>0) {
+                                            $sizeId = mysqli_fetch_assoc($sizeIdResult);
+                                        }
+                                        else {
+                                            break;
+                                        }
+                                        
+                                        if ($sizeId['size_id']==3) {
+                                           echo "<input type='hidden' name='size' value='3'>";
+                                        }else {
+                                            echo "<select name='size' id='size' required><option value='select'>Select size</option>";
+                                            do {
+                                                $sizeQuery = "select * from product_size where size_id = " . $sizeId['size_id'];
+                                                $sizeResult = mysqli_query($connection, $sizeQuery);
+                                                $size = mysqli_fetch_assoc($sizeResult);
+                                                echo "<option value='" . $size['size_id'] . "'>" . $size['size_name'] . "</option>";
+                                                                        
+                                            }while($sizeId = mysqli_fetch_assoc($sizeIdResult));
+                                            echo "</select>";
+                                        }
                                     ?>
-                                    
+
                                     <?php
                                         $colorIdQuery = "select distinct color_id from product_stock where product_id = " . $product['product_id'];
                                         $colorIdResult = mysqli_query($connection, $colorIdQuery );
 
-                                        echo "<select name='color' id='color' style='margin:10px auto;' required><option value='select'>Select color</option>";
-                                        while($colorId = mysqli_fetch_assoc($colorIdResult)) {
-                                            $colorQuery = "select * from product_color where color_id = " . $colorId['color_id'];
-                                            $colorResult = mysqli_query($connection, $colorQuery);
-                                            $color = mysqli_fetch_assoc($colorResult);
-                                            echo "<option value='" . $color['color_id'] . "'>" . $color['color_name'] . "</option>";
-                                                                    
-                                        };
-                                        echo "</select>";
-                                    ?>
+                                        if(mysqli_num_rows($colorIdResult)>0) {
+                                            $colorId = mysqli_fetch_assoc($colorIdResult);
+                                        }else {
+                                            break;
+                                        }
 
+                                        if ($colorId['color_id']==9) {
+                                            echo "<input type='hidden' name='color' value='9'>";
+                                        }else {
+                                            echo "<select name='color' id='color' style='margin:10px auto;' required><option value='select'>Select color</option>";
+                                            do {
+                                                $colorQuery = "select * from product_color where color_id = " . $colorId['color_id'];
+                                                $colorResult = mysqli_query($connection, $colorQuery);
+                                                $color = mysqli_fetch_assoc($colorResult);
+                                                echo "<option value='" . $color['color_id'] . "'>" . $color['color_name'] . "</option>";
+                                                                        
+                                            }while($colorId = mysqli_fetch_assoc($colorIdResult));
+                                            echo "</select>";
+                                        }
+                                    ?>
                                     <input type="number" name="quantity" id="quantity" value="0" min="0" required>
 
                                     <button type="submit" name="add_to_cart" class="cart_btn">
