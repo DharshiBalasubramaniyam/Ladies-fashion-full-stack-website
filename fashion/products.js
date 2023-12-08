@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let previewBox = previewContainer.querySelectorAll('.preview');
 
     // menu button
-    menuBtn.addEventListener("click", function () {
-        categoriesForm.classList.toggle("show");
-    });
+    // menuBtn.addEventListener("click", function () {
+    //     categoriesForm.classList.toggle("show");
+    // });
 
     // pop up
     document.querySelectorAll('.cart-btn').forEach(product => {

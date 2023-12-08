@@ -1,40 +1,24 @@
 <?php
    include '../database/dbconnection.php';
 
+//    print_r($_SERVER['REQUEST_URI']);
+
    include '../main-header/header.php';
 
-   if (isset($_GET['main'])) {
-         //    fetch main cat
-        $main_category_id = $_GET['main'];
+   if (isset($_GET['searchword'])) {    
+        $search_word = $_GET['searchword'];
 
-        // fetching sub cat from category for above main cat
-        $category_query = mysqli_query($connection, "SELECT * FROM category where main_category_id=$main_category_id")
-                    or die('Category query failed');
-        $categories = mysqli_fetch_all($category_query, MYSQLI_ASSOC); 
-
-        $main_category_res = mysqli_query($connection, "select category_name from main_category where main_category_id=$main_category_id")
-                       or die('Category query failed');
-        $main_category_name = mysqli_fetch_assoc($main_category_res)['category_name'];
-
-        $selected_sub_category_id = $categories[0]['sub_category_id'];
-        $sub_catagory_name = $categories[0]['category_name'];
+        $productSql = "select p.* from products p 
+                        inner join product_category pc on p.product_id = pc.product_id
+                        inner join category sc on pc.category_id = sc.sub_category_id
+                        inner join main_category mc on sc.main_category_id = mc.main_category_id
+                        where p.product_name like '%$search_word%' or 
+                        sc.category_name like '%$search_word%' 
+                        or mc.category_name like '%$search_word%'";
+        $search_res = mysqli_query($connection, $productSql);
+   }else {
+    header('location:../shop/index.php');
    }
-    if(isset($_GET['sub'])){
-        $selected_sub_category_id = $_GET['sub'];
-        $sub_category_res = mysqli_query($connection, "select * from category where sub_category_id = $selected_sub_category_id");
-        $category_data = mysqli_fetch_assoc($sub_category_res);
-        $sub_catagory_name = $category_data['category_name'];
-        $main_category_id = $category_data['main_category_id'];
-
-        $category_query = mysqli_query($connection, "SELECT * FROM category where main_category_id=$main_category_id")
-                    or die('Category query failed');
-        $categories = mysqli_fetch_all($category_query, MYSQLI_ASSOC); 
-
-        $main_category_res = mysqli_query($connection, "select category_name from main_category where main_category_id=$main_category_id")
-                       or die('Category query failed');
-        $main_category_name = mysqli_fetch_assoc($main_category_res)['category_name'];
-
-    }
     
 
    // wishlist start
@@ -106,14 +90,14 @@
                     $amount = $new_quantity*$price;
                     mysqli_query($connection, "UPDATE shopping_cart SET quantity = '$new_quantity', amount = $amount WHERE cart_item_id = '{$existing_item['cart_item_id']}'");
                     $_SESSION['message'] = "Product already in your cart! So that the quantity is updated.";
-                    echo "<script>window.location.href = 'fashion.php?sub=" . $selected_sub_category_id . "'</script>";
+                    echo "<script>window.location.href = 'search.php?searchword=" . $search_word . "'</script>";
                 } 
                 else {
                     $query = "INSERT INTO shopping_cart (user_id, product_id, quantity, color_id, size_id, amount) 
                         VALUES ($user_id,$product_id,$quantity, $color_id,$size_id,$amount)" ;
                     mysqli_query($connection, $query);
                     $_SESSION['message'] = "Product successfully added to your cart!";
-                    echo "<script>window.location.href = 'fashion.php?sub=" . $selected_sub_category_id . "'</script>";
+                    echo "<script>window.location.href = 'search.php?searchword=" . $search_word . "'</script>";
                     
                     
                 }
@@ -136,7 +120,7 @@
     // display messages
     if(isset($_SESSION['message'])){
             echo '
-                <form class="message-wrapper" action="fashion.php?sub=' . $selected_sub_category_id  . '" method="post">
+                <form class="message-wrapper" action="search.php?searchword=' . $search_word  . '" method="post">
                     <div class="message">
                         <span>' . $_SESSION['message'] . '</span>
                         <button class="fas fa-times" name="msg"></button>
@@ -147,7 +131,6 @@
     }
 ?> 
 
-<!-- onclick="this.parentElement.remove()"  -->
 <!DOCTYPE html>
 <head>
    <meta charset="UTF-8">
@@ -161,48 +144,30 @@
 <body>
     
 
-    <!-- sub header, items fetched from the database -->
-   <section class="sub_header">
-        <div class="flex">
-            <a href="fashion.php?main=<?php echo $main_category_id ?>" class="sub-logo"><?php echo $main_category_name ?></a>
-        </div>
-
-        <div class="items">
-            <div id="menu-btn" class="fas fa-bars"></div> 
-            <div>
-                <?php 
-                    
-                    foreach ($categories as $category) { ?>
-                        <a href='fashion.php?sub=<?php echo $category['sub_category_id']?>'>
-                            <button class="<?php if($category['sub_category_id'] == $selected_sub_category_id) echo 'active'; else ''; ?>">
-                                <?php echo $category['category_name']; ?>
-                            </button>
-                        </a>
-                <?php } ?>
-            </div>
-        </div>   
+   <section class="sub_header search-header" style="display: flex;align-items:center;justify-content:center;flex-direction:column">
+        <h1 style="margin-top: 20px;color:var(--pink)">Search results for <q style="color:var(--pink)"><?php echo $search_word ?></q></h1>
+        <p><?php echo mysqli_num_rows($search_res) ?> results</p>
    </section>
-   <!-- Sub-header end-->
 
     <?php
-        if(isset($selected_sub_category_id)){
+        #if(isset($selected_sub_category_id)){
     ?>
 
     <section class="products">
-            <h1 class="title"><?php echo $sub_catagory_name; ?></h1>  
+            <!-- <h1 class="title"><?php #echo $sub_catagory_name; ?></h1>   -->
             <div class="box-container">
             <?php  
-                $select_products = mysqli_query($connection, "SELECT p.* FROM products p 
-                                                                JOIN product_category pc ON p.product_id = pc.product_id
-                                                                where pc.category_id = $selected_sub_category_id")
-                                or die('query failed');
+                // $select_products = mysqli_query($connection, "SELECT p.* FROM products p 
+                //                                                 JOIN product_category pc ON p.product_id = pc.product_id
+                //                                                 where pc.category_id = $selected_sub_category_id")
+                //                 or die('query failed');
                 
-                if(mysqli_num_rows($select_products) > 0){
-                    while($fetch_product = mysqli_fetch_assoc($select_products)){
+                if(mysqli_num_rows($search_res) > 0){
+                    while($fetch_product = mysqli_fetch_assoc($search_res)){
                         $products[] =$fetch_product;
             ?>
 
-                        <form action="fashion.php?sub=<?php echo $selected_sub_category_id ?>" method="post" class="box" data-name="<?php echo $fetch_product['product_id']; ?>">
+                        <form action="search.php?searchword=<?php echo $search_word ?>" method="post" class="box" data-name="<?php echo $fetch_product['product_id']; ?>">
                             <img class="image" src="../uploadedImages/<?php echo $fetch_product['image_url']; ?>">
                             
                             <div class="name"><b><?php echo $fetch_product['product_name']; ?></b></div>
@@ -238,7 +203,7 @@
                                 </div>
                                 <div class="price">Rs <?php echo $product['price']; ?>/-</div> 
 
-                                <form action="fashion.php?sub=<?php echo $selected_sub_category_id ?>" method="post">
+                                <form action="search.php?searchword=<?php echo $search_word ?>" method="post">
                                     <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
                                     <input type="hidden" name="price" value="<?php echo $product['price']; ?>">
                                     
@@ -313,27 +278,11 @@
         </section>
 
 
-    <?php }else { ?>
-    
-        <section class="Categories">
-            <?php
-            foreach($categories as $category){
-                $imgQuery = "select image_url from products p 
-                            inner join product_category c on p.product_id = c.product_id
-                            where c.category_id =" . $category['sub_category_id'] . " limit 1";
-                $image_res = mysqli_query($connection, $imgQuery);
-                $img = mysqli_fetch_assoc($image_res)['image_url'];
+    <?php #}else { ?>
 
-                echo "<div class='box'>";
-                echo "<img class='image' src='../uploadedImages/$img'>";
-                echo "<a href='fashion.php?sub=" . $category['sub_category_id'] . "'><button class='option_btn'>Shop " . $category['category_name'] . "</button></a>";
-                echo "</div>";
-            }
-            ?>
-        </section>
 
      <?php
-        }
+        #}
         include('../shop/footer.php');
      ?>
 
