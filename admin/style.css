@@ -1,10 +1,17 @@
 button {
-    font-size: 12px;
+    font-size: 13px;
+    padding: 5px;
+}
+button.delete {
+    background-color: red;
+}
+button.delete:hover {
+    background-color: var(--black);
 }
 ::-webkit-scrollbar {
     width: 10px;
-    /* height: 10px; */
 }
+
 
 /* ----------------------------------------------header styles------------------------------------------------------ */
 header {
@@ -158,9 +165,10 @@ a.disabled, a.disabled button {
     transition: 0.3s;
     font-size: 16px;
     width: 40px;
+    padding: 5px 15px;
 }
 .products-container .actions  button:hover {
-    background-color: var(--pink);
+    background-color: var(--black);
 }
 .products-container .actions  button i {
     color: var(--white);
@@ -375,12 +383,12 @@ form > div input,  form > div select,  form > div textarea{
 .form .row {
     display: flex;gap: 6px;
 }
-.form table {
+.form .input-box table {
     width: 100%;
     margin: 10px 0;
 }
 .form table td input {
-    width: 75px;
+    width: 50px;
 }
 
 
@@ -448,6 +456,54 @@ form > div input,  form > div select,  form > div textarea{
     text-align: right;
 }
 
+/* -------------------------------------pop up styles ------------------------------------------------------------------- */
+.pop-up-container {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+}
+.pop-up-container h2 {
+    color: var(--pink);
+}
+.pop-up-container form {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    background-color: var(--white);
+    padding: 15px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--lightpink);
+}
+.pop-up-container form input {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+}
+.pop-up-container form button {
+    padding: 7px 15px;
+    font-size: 16px;
+}
+.pop-up-container form .fa-times {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    cursor: pointer;
+    color: var(--pink); 
+    font-size: 1.5rem;
+}
+
 /* footer */
 footer {
     /* color: var(--black); */
@@ -479,20 +535,23 @@ footer {
         padding: 4px 5px;
         font-size: 14px;
     }
-    .products-container .product-list, .dashboard .order-list {
+    .products-container .product-list, .dashboard .order-list, .orders-list {
         overflow-x: scroll;
     }
-    .products-container table,  .order-list table {
+    .products-container table,  .order-list table, .orders-list table {
         width: 768px;
     }
     .products-container table button{
         width: 140px;
     }
-    .products-container .progress >div button {
+    .products-container .progress > div button {
         display: none;
     }
     .container .messages-wrapper {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .products-container .h1 {
+        flex-direction: column;margin-bottom: 10px;
     }
 }
 @media all and (max-width:1000px) {

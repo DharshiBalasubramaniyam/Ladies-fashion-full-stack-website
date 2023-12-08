@@ -24,7 +24,7 @@
                                     select product_id from product_category where category_id in (
                                         select sub_category_id from category where main_category_id like '%$filterword%'
                                     )
-                                )  limit $limit offset $offset";
+                                )  order by reg_date desc, product_id asc limit $limit offset $offset";
 
     $productsResult = mysqli_query($connection, $productsSelectQuery);
 

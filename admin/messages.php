@@ -17,6 +17,12 @@
     else if ($orderby == 'oldest') 
         $messagesResult = mysqli_query($connection, "select * from messages order by date asc");
 
+    if (isset($_GET['del_msg'])) {
+        $id = $_GET['del_msg'];
+        mysqli_query($connection, "delete from messages where message_id = $id");
+        echo "<script>alert('message deleted successfully!');window.location.href = 'messages.php';</script>";
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +30,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customers - pink pearl</title>
+    <title>Messages - pink pearl</title>
     <link rel="stylesheet" href="../index.css">
     <script src="https://kit.fontawesome.com/c732ec9339.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
@@ -111,7 +117,7 @@
                                     <span><?php echo $msg['email'] ?></span>
                                 </span>
                             </div>
-                            <button><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button>
+                            <a href="messages.php?del_msg=<?php echo $msg['message_id'] ?>"><button type='submit' name="delete_msg" class="delete"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button></a>
                         </div>
 
                         <div class="comments">

@@ -208,7 +208,7 @@
                                             <thead><th>Customer ID</th><th>Username</th><th>Email</th></thead>
 
                                             <?php 
-                                                $customerSelectQuery = "select * from users order by reg_date limit 5";
+                                                $customerSelectQuery = "select * from users order by reg_date desc, user_id desc limit 5";
 
                                                 $customersResult = mysqli_query($connection, $customerSelectQuery);
 

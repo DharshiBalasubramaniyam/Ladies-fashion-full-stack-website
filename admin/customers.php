@@ -5,7 +5,7 @@
     }
     include('../database/dbconnection.php');
 
-    $limit = 10;
+    $limit = 8;
     $offset = 0;
     $searchword = "";
 
@@ -16,7 +16,7 @@
         $searchword = $_GET['searchword'];
     }
 
-    $customerSelectQuery = "select * from users where user_id like '%" . $searchword . "%' and user_type='customer' limit $limit offset $offset";
+    $customerSelectQuery = "select * from users where user_id like '%" . $searchword . "%' and user_type='customer' order by reg_date desc limit $limit offset $offset";
 
     $customersResult = mysqli_query($connection, $customerSelectQuery);
 
@@ -131,7 +131,7 @@
                             echo "<td>" . $customer['username'] . "</td>";
                             echo "<td>" . $customer['email'] . "</td>";
                             echo "<td>" . $customer['phone'] . "</td>";
-                            echo "<td style='display:flex; justify-content:center;'><a href='customers.php?remove=". $customer['user_id'] . "'><button><i class='fa fa-trash-o' aria-hidden='true'></i>Remove</button></a></td>";
+                            echo "<td style='display:flex; justify-content:center;'><a href='customers.php?remove=". $customer['user_id'] . "'><button class='delete'><i class='fa fa-trash-o' aria-hidden='true'></i>Remove</button></a></td>";
                             echo "</tr>";
                         }
                     ?>

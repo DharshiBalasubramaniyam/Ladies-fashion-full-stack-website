@@ -129,7 +129,7 @@
 
                     <div class="input-group">
                         <label for="">Phone No</label><br>
-                        <input type="text" class="form" name="phone" placeholder="Enter your Tel-Number:07xxxxxxxx" value="<?php echo "$phone"; ?>">
+                        <input type="text" class="form" name="phone" placeholder="07xxxxxxxx" value="<?php echo "$phone"; ?>">
                         <small><?php  echo $phoneError  ?></small>
                     </div>
 
