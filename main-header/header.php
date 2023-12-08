@@ -13,7 +13,7 @@
 
     if (isset($_POST['search'])) {
         $search_word = $_POST['search-word'];
-        
+        echo "<script>window.location.href='../fashion/search.php?searchword=$search_word'</script>";
     }
 
     $main_category_res = mysqli_query($connection, "SELECT * FROM main_category")
@@ -37,7 +37,7 @@
     <header>
         <div class="top-header">
             <div class="logo"><a href="../shop/index.php"><img src="../uploadedImages/logo.png" alt="Pink-pearl-logo"></a></div>
-            <form class="search laptop-setup " action="header.php" method='post'>
+            <form class="search laptop-setup " action="../main-header/header.php" method='post'>
                 <input type="text" placeholder="Search entire fashion here" name='search-word'><button type="submit" name="search"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
             <div class="top-header-right">
@@ -85,7 +85,7 @@
         </div>
         <div class="search-body mobile-setup">
             <i class="fa fa-arrow-left" aria-hidden="true" onclick="handleSearch()"></i>
-            <form class="search" action="header.php" method='post'>
+            <form class="search" action="../main-header/header.php" method='post'>
                 <input type="text" placeholder="Search entire fashion here" name='search-word'><button  type="submit" name="search"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
         </div>

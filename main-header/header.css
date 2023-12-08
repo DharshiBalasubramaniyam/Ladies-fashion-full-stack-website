@@ -30,16 +30,26 @@ header {
 }
 .top-header .search button {
     position: absolute;
-    top: 1px;
+    top: 0;
     right:0;
-    height: 40px;
+    height: 100%;
     width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
+    border: 2px solid var(--grey);
+    border-left: 2px solid var(--pink);
+    /* border-radius: 0; */
     background-color: transparent;
     font-size: 18px;
+    background-color: var(--pink);
+    color: var(--white);
+}
+.top-header .search button:hover {
+    background-color: var(--grey);
+    border-left: 2px solid var(--grey);
+    color: var(--white);
+
 }
 .top-header input:focus {
     border: 2px solid var(--pink);
@@ -89,6 +99,9 @@ header .mobile-setup, .toggle-menu, .menu {
 header a, header i{
     transition: 0.3s;
     cursor: pointer;
+}
+.top-header .search button i:hover {
+    color: var(--white);
 }
 header a:hover, header i:hover {
     color: var(--pink);
@@ -148,12 +161,19 @@ header .search-body {
     }
     header .search-body .search button {
         position: absolute;
+        top: 0;
         right: 0;
         height: 42px;
         width: 40px;
-        border: none;
+        border: 2px solid var(--grey);
+        border-left: 2px solid var(--pink);
         background-color: transparent;
-        font-size: 18px; 
+        font-size: 18px;
+        background-color: var(--pink);
+        color: var(--white);
+    }
+    header .search-body .search button i:hover {
+        color: var(--white);
     }
     .top-header input:focus {
         border: 2px solid var(--pink);
