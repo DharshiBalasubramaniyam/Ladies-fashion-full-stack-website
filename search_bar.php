@@ -6,7 +6,7 @@
    $_SESSION['user_id']=1;
    $_SESSION["search_word"]="lehe";
    
-   // wishlist start
+   
    // wishlist start
    if(isset($_POST['add_to_wishlist'])){
       
