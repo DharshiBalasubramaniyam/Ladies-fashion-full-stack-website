@@ -130,7 +130,7 @@
                                             <td><?=$items['category_name'];?></td>
                                             <td align="center" style=>
                                                 <a href="editmaincategory.php?id=<?php echo $items['main_category_id'] ?>" style="display:inline-block"><button style='font-size:14px;padding:5px 8px;'><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
-                                                <a href="editmaincategory.php?delete=<?php echo $items['main_category_id'] ?>" style="display:inline-block" onclick="return confirm('Are you sure? Do you want to delete main category <?php echo $items['category_name'];?> ?')"><button style='font-size:14px;padding:5px 8px;'><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button></a>
+                                                <a href="editmaincategory.php?delete=<?php echo $items['main_category_id'] ?>" style="display:inline-block" onclick="return confirm('Are you sure? Do you want to delete main category <?php echo $items['category_name'];?> ?')"><button style='font-size:14px;padding:5px 8px;' class='delete'><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button></a>
                                             </td>
                                         </tr>
                                         <?php
@@ -170,7 +170,7 @@
                                             <td><?php echo $items['main'] ?></td>
                                             <td align="center" style=>
                                                 <a href="editsubcategory.php?id=<?php echo $items['sub_category_id'] ?>" style="display:inline-block"><button style='font-size:14px;padding:5px 8px;'><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
-                                                <a href="editsubcategory.php?delete=<?php echo $items['sub_category_id'] ?>" style="display:inline-block" onclick="return confirm('Are you sure? Do you want to delete sub category <?php echo $items['sub'];?> ?')"><button style='font-size:14px;padding:5px 8px;'><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button></a>
+                                                <a href="editsubcategory.php?delete=<?php echo $items['sub_category_id'] ?>" style="display:inline-block" onclick="return confirm('Are you sure? Do you want to delete sub category <?php echo $items['sub'];?> ?')"><button style='font-size:14px;padding:5px 8px;' class='delete'><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button></a>
                                             </td>                                        
                                         </tr>
                                         <?php

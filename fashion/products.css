@@ -224,6 +224,24 @@ html{
     .products .box-container {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
+    .products-preview .preview .name {
+        font-size: 0.9rem;
+    }
+    
+    .products-preview .preview .description {
+        font-size: 0.8em;
+    }
+    
+    .products-preview .preview .price {
+        font-size: 0.9em;
+    }
+    .products-preview .preview .price {
+        font-size: 0.9em;
+    }
+    .products-preview .preview img {
+        max-width: 100%;
+        height:12em;
+    }
  }
  
 .products .box-container .box {
@@ -337,7 +355,7 @@ html{
 
 .products-preview .preview img {
     max-width: 100%;
-    height:15em;
+    height:13em;
     border-radius: 8px;
     margin-bottom: 1rem;
 }
@@ -356,20 +374,20 @@ html{
 }
 
 .products-preview .preview .name {
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1rem;
+    font-weight: 600;
     margin-bottom: 0.5rem;
     text-transform:uppercase;
 }
 
 .products-preview .preview .description {
-    font-size: 1.1em;
+    font-size: 1em;
     color: var(--black);
     margin-bottom: 0.5rem;
 }
 
 .products-preview .preview .price {
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: bold;
     color: var(--pink);
     margin-bottom: 1rem;

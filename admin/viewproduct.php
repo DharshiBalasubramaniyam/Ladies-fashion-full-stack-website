@@ -5,6 +5,28 @@
     }
     include('../database/dbconnection.php');
 
+    if(isset($_POST['add-color'])) {
+        $new_color = sanitizeMySQL($connection, $_POST['new-color']);
+        if ($new_color=="") {
+            echo "<script>alert('color name is required!')</script>";
+        }elseif(preg_match("/[^a-zA-Z -]/", $new_color)){
+            echo "<script>alert('Invalid color name!')</script>";
+        }else {
+            addColor($connection, $new_color);
+        }
+    }
+
+    if(isset($_POST['add-size'])) {
+        $new_size = sanitizeMySQL($connection, $_POST['new-size']);
+        if ($new_size=="") {
+            echo "<script>alert('size name is required!')</script>";
+        }elseif(preg_match("/[^a-zA-Z0-9 -'\"]/", $new_size)){
+            echo "<script>alert('Invalid size name!')</script>";
+        }else {
+            addSize($connection, $new_size);
+        }
+    }
+
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
 
@@ -104,6 +126,8 @@
         deleteProduct($connection, $id);
         echo "<script>alert('The product deleted succesfully!');window.location.href = 'products.php';</script>";
     }
+
+    
     
 
 ?>
@@ -279,7 +303,12 @@
                             <input type="number" name="stock" id="" placeholder="Enter stock quantity" value="0" min="0">
                         </div>
                         <small><?php echo $sizeError . " " . $colorError ?></small>
-                        <button style="font-size: 16px;padding:10px 15px;margin-top:10px;" name="add-stock">Add stock</button>
+                        <div style="display: flex;align-items:center">
+                            <button style="font-size: 16px;padding:10px 15px;margin-top:10px;" name="add-stock">Add stock</button>
+                            <a href="#" style="color: var(--pink);display:inline-block;" onclick="openSize()">Add new size</a>
+                            <a href="#" style="color: var(--pink);" onclick="openColor()">Add new color</a>
+                        </div>
+                        
                     </div>
 
                     <div class="input-box">
@@ -294,19 +323,35 @@
         
     </main>
 
+    <div class="pop-up-container">
+        <form class="add-color" method="post" action="viewproduct.php?id=<?php echo $id  ?>">
+            <i class="fas fa-times"></i>
+            <h2>Add new color</h2>
+            <input type="text" name="new-color" placeholder="Enter color name">
+            <button type="submit" name="add-color">Add color</button>
+        </form>
+
+        <form class="add-size" method="post" action="viewproduct.php?id=<?php echo $id  ?>">
+            <i class="fas fa-times"></i>
+            <h2>Add new size</h2>
+            <input type="text" name="new-size" placeholder="Enter size name">
+            <button type="submit" name="add-size">Add size</button>
+        </form>
+    </div>
+
     <footer>
         &copy; copyright  @ <?php echo date('Y'); ?> by <span style="color: var(--pink);">Pink Pearl</span>
     </footer>
 
     <script>
-        const sidebar = document.querySelector('.side-bar');
-        function handleNav() {
-            if (sidebar.classList.contains("open")) {
-                sidebar.classList.remove("open");
-            }else {
-                sidebar.classList.add("open");
-            }
-        }
+        // const sidebar = document.querySelector('.side-bar');
+        // function handleNav() {
+        //     if (sidebar.classList.contains("open")) {
+        //         sidebar.classList.remove("open");
+        //     }else {
+        //         sidebar.classList.add("open");
+        //     }
+        // }
         function handleUpdate(pid, sid) {
             let form = document.querySelector(".details");
             let action = "viewproduct.php?id=" + pid + "&stock=" + sid; 
@@ -320,6 +365,8 @@
             form.submit();
         }
     </script>
+
+    <script src="admin.js"></script>
     
 </body>
 </html>
@@ -427,5 +474,26 @@
         mysqli_query($connection, "delete from product_stock where product_id = $id");
         mysqli_query($connection, "delete from product_category where product_id = $id");
 
+    }
+
+    function addColor($connection, $new_color) {
+        $color_exists = mysqli_query($connection, "select * from product_color where color_name = '$new_color'");
+        if (mysqli_num_rows($color_exists)>0) {
+            echo "<script>alert('The color is already exists!')</script>";
+        }else {
+            mysqli_query($connection, "insert into product_color(color_name) values ('$new_color')");
+            echo "<script>alert('New color added successfully!')</script>";
+
+        }
+    }
+    function  addSize($connection, $new_size) {
+        $size_exists = mysqli_query($connection, "select * from product_size where size_name = '$new_size'");
+        if (mysqli_num_rows($size_exists)>0) {
+            echo "<script>alert('The size is already exists!')</script>";
+        }else {
+            mysqli_query($connection, "insert into product_size(size_name) values ('$new_size')");
+            echo "<script>alert('New size added successfully!')</script>";
+
+        }
     }
 ?>

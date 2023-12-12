@@ -64,7 +64,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add new user - pink pearl</title>
+    <title>Admin profile - pink pearl</title>
     <link rel="stylesheet" href="../index.css">
     <script src="https://kit.fontawesome.com/c732ec9339.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">

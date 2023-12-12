@@ -28,7 +28,16 @@
             elseif($row['user_type'] == 'customer'){
                 $_SESSION['user_id'] = $row['user_id'];
                 $_SESSION['isLogged'] = true;
-                header('Location: ../shop/index.php');
+                if (isset($_SESSION['redirect_url']) && !empty($_SESSION['redirect_url'])) {
+                    $redirectURL = $_SESSION['redirect_url'];
+                    unset($_SESSION['redirect_url']); 
+                    header("Location: $redirectURL");
+                    exit();
+                } else {
+                    header("Location: ../shop/index.php"); 
+                    exit();
+                }
+                // header('Location: ../shop/index.php');
        
        
             } else {
