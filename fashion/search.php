@@ -1,11 +1,10 @@
 <?php
    include '../database/dbconnection.php';
 
-//    print_r($_SERVER['REQUEST_URI']);
 
    include '../main-header/header.php';
 
-   if (isset($_GET['searchword'])) {    
+   if (isset($_GET['searchword']) && !empty($_GET['searchword'])) {    
         $search_word = $_GET['searchword'];
 
         $productSql = "select p.* from products p 
@@ -149,18 +148,9 @@
         <p><?php echo mysqli_num_rows($search_res) ?> results</p>
    </section>
 
-    <?php
-        #if(isset($selected_sub_category_id)){
-    ?>
-
     <section class="products">
-            <!-- <h1 class="title"><?php #echo $sub_catagory_name; ?></h1>   -->
             <div class="box-container">
             <?php  
-                // $select_products = mysqli_query($connection, "SELECT p.* FROM products p 
-                //                                                 JOIN product_category pc ON p.product_id = pc.product_id
-                //                                                 where pc.category_id = $selected_sub_category_id")
-                //                 or die('query failed');
                 
                 if(mysqli_num_rows($search_res) > 0){
                     while($fetch_product = mysqli_fetch_assoc($search_res)){
@@ -277,12 +267,7 @@
             </div>
         </section>
 
-
-    <?php #}else { ?>
-
-
      <?php
-        #}
         include('../shop/footer.php');
      ?>
 
