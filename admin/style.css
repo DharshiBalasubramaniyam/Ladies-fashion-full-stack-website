@@ -214,9 +214,17 @@ a.disabled, a.disabled button {
     text-transform: uppercase;
     font-size: 14px;
 }
-.products-container table tr:nth-of-type(even),
-.order-list table tr:nth-of-type(even)  {
+.products-container  table tr:nth-of-type(even),
+.order-list table  tr:nth-of-type(even)  {
     background-color: var(--lightpink);
+}
+.products-container  .main-table table tr:nth-of-type(even),
+.products-container  .main-table table tr:nth-of-type(odd){
+    border-bottom: 2px solid var(--white);
+}
+.products-container .main-table table tr:nth-of-type(even):hover,
+.products-container .main-table table tr:nth-of-type(odd):hover{
+    border-bottom: 2px solid var(--grey);
 }
 .products-container .progress {
     display: flex;

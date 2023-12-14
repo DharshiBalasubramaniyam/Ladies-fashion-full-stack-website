@@ -6,12 +6,14 @@
     include('../database/dbconnection.php');
 
 
-    $main1 = $main2 = $mainError1 = $mainError2 = $sub = $subError = $image_path = $imageError = "";
+    $main1 = $main2 = $mainError1 = $mainError2 = $sub = $subError = $image_path = $imageError = $description = $descriptionError = "";
 
     if (isset($_POST['add-main'])) {
         $main1 = sanitizeMySQL($connection, $_POST['main1']);
         $mainError1 = validate_name($main1);
         $imageError = validate_image($_FILES['image']);
+        $description = sanitizeMySQL($connection, $_POST['description']);
+        $descriptionError = validate_description($description);
 
         if ($imageError == "" && $_FILES['image']['size']!=0) {
             $image_path = basename($_FILES['image']['name']);
@@ -21,7 +23,7 @@
             }
         }
         if($mainError1=="" && $imageError=="") {
-            mysqli_query($connection, "insert into main_category(category_name, image_url) values('$main1', '$image_path')");
+            mysqli_query($connection, "insert into main_category(category_name, description, image_url) values('$main1', '$description', '$image_path')");
             echo "<script>alert('Main category added successfully!');window.location.href = 'addNewCategory.php'</script>";
         }
     }
@@ -119,6 +121,11 @@
                     <br><small><?php echo $mainError1 ?></small>
                 </div>
                 <div class="input-group">
+                    <label for="">Main category description</label>
+                    <input type="text" name="description" value="<?php echo $description ?>">
+                    <small><?php echo $descriptionError ?></small>
+                </div>
+                <div class="input-group">
                     <label for="">New image</label><br>
                     <input type="file" name="image" accept=".jpeg, .jpg, .png, .webp">
                     <br><small><?php echo $imageError ?></small>
@@ -212,6 +219,15 @@ function validate_image($image) {
     }
     return "";
 
+}
+function validate_description($field) {
+    if ($field == "") {
+        return "Description is required!";
+    }
+    else if (strlen($field)>100) {
+        return "Decription can have atmost 100 characters!";
+    }
+    return "";
 }
 
 ?>

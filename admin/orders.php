@@ -19,7 +19,7 @@
         $filterword = $_GET['filterword'];
     }
 
-    $ordersSelectQuery = "select * from placed_order where order_id like '%" . $searchword . "%' and status  like '%" . $filterword . "%' limit $limit offset $offset";
+    $ordersSelectQuery = "select * from placed_order where order_id like '%" . $searchword . "%' and status  like '%" . $filterword . "%' order by order_id desc limit $limit offset $offset";
 
     $ordersResult = mysqli_query($connection, $ordersSelectQuery);
 
@@ -123,7 +123,7 @@
                 <a href="<?php echo "orders.php?offset=". $offset+$limit . "&searchword=$searchword&filterword=$filterword" ?>" class="<?php if ($offset==$finalOffset) echo 'disabled' ?>"><button style="font-size: 25px;padding: 0px 15px" >></button></a>
             </div>
 
-            <div class="product-list">
+            <div class="product-list main-table">
                 <table>
                     <thead><th>Order ID</th><th>Date</th><th>User ID</th><th>Status</th><th>Amount</th><th>action</th></thead>
 

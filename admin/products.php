@@ -5,7 +5,7 @@
     }
     include('../database/dbconnection.php');
 
-    $limit = 8;
+    $limit = 9;
     $offset = 0;
     $searchword = ""; $filterword = "";
 
@@ -24,7 +24,7 @@
                                     select product_id from product_category where category_id in (
                                         select sub_category_id from category where main_category_id like '%$filterword%'
                                     )
-                                )  order by reg_date desc, product_id asc limit $limit offset $offset";
+                                )  order by product_id desc, product_id asc limit $limit offset $offset";
 
     $productsResult = mysqli_query($connection, $productsSelectQuery);
 
@@ -134,7 +134,7 @@
                 <a href="<?php echo "products.php?offset=". $offset+$limit . "&searchword=$searchword&filterword=$filterword" ?>" class="<?php if ($offset==$finalOffset) echo 'disabled' ?>"><button style="font-size: 25px;padding: 0px 15px" >></button></a>
             </div>
 
-            <div class="product-list">
+            <div class="product-list main-table">
                 <table>
                     <thead><th>Product ID</th><th>Product name</th><th>Unit price (Rs.)</th><th>Category</th><th>action</th></thead>
 

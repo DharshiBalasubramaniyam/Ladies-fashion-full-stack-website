@@ -5,7 +5,7 @@
     }
     include('../database/dbconnection.php');
 
-    $limit = 8;
+    $limit = 10;
     $offset = 0;
     $searchword = "";
 
@@ -120,7 +120,7 @@
                 <a href="<?php echo "customers.php?offset=". $offset+$limit . "&searchword=$searchword" ?>" class="<?php if ($offset==$finalOffset) echo 'disabled' ?>"><button style="font-size: 25px;padding: 0px 15px" >></button></a>
             </div>
 
-            <div class="product-list">
+            <div class="product-list main-table">
                 <table>
                     <thead><th>Customer ID</th><th>Username</th><th>Email</th><th>Phone</th><th>action</th></thead>
 

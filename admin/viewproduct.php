@@ -37,36 +37,27 @@
         $description = $product_data['description'];
         $image_url = $product_data['image_url'];
 
-        $catergoryIdResult = mysqli_query($connection, "select category_id from product_category where product_id = $id");
+        $catergoryIdResult = mysqli_query($connection, "select * from product_category where product_id = $id");
         $category_id = mysqli_fetch_assoc($catergoryIdResult)['category_id'];
 
-        $productCategoryResult = mysqli_query($connection, "select sc.category_name as sub, mc.category_name as main 
-                                                            from category sc, main_category mc 
-                                                            where sc.main_category_id = mc.main_category_id 
-                                                            and sub_category_id = $category_id");
-        $productCategory = mysqli_fetch_assoc($productCategoryResult);
-        $main_category = $productCategory['main'];
-        $type = $productCategory['sub'];
-        
-
-        $mainCategories = mysqli_query($connection, 'select * from main_category');
-        $types = mysqli_query($connection, 'select * from category');
+        $types = mysqli_query($connection, 'select sc.sub_category_id, sc.category_name as sub, mc.category_name as main from category sc 
+                                    inner join main_category mc on  sc.main_category_id = mc.main_category_id
+                                    order by sc.sub_category_id asc');
 
         $productStockResult = mysqli_query($connection, "select * from product_stock where product_id = $id");
 
-        $sizeResult = mysqli_query($connection, "select * from product_size");
-        $colorResult = mysqli_query($connection, "select * from product_color");
+        $sizeResult = mysqli_query($connection, "select * from product_size order by size_name asc");
+        $colorResult = mysqli_query($connection, "select * from product_color order by color_name asc");
 
 
     }
 
-    $nameError = $priceError = $descriptionError = $main_categoryError = $typeError = $imageError = $categoryError = $sizeError = $colorError = "";
+    $nameError = $priceError = $descriptionError = $main_categoryError = $typeError = $imageError = $sizeError = $colorError = "";
 
     if (isset($_POST['update-details'])) {
         $name = sanitizeMySQL($connection, $_POST['name']);
         $price = sanitizeMySQL($connection, $_POST['price']);
         $description = sanitizeMySQL($connection, $_POST['description']);
-        $main_category = sanitizeMySQL($connection, $_POST['main-category']);
         $type = sanitizeMySQL($connection, $_POST['type']);
         $image_path = "";
         $imageError = "";
@@ -84,14 +75,10 @@
         $nameError = validate_name($name);
         $priceError = validate_price($price);
         $descriptionError = validate_description($description);
-        $main_categoryError = validateSelect($main_category);
         $typeError = validateSelect($type);
-        if ($typeError=="" && $main_categoryError=="") {
-            $categoryError = validate_category($connection, $main_category, $type);
-        }
 
-        if ($nameError=="" && $priceError ==""  && $descriptionError =="" && $imageError == "" && $typeError=="" && $main_categoryError=="" && $categoryError=="") {
-            updateDetails($connection, $id, $name, $price, $description, $image_path, $main_category, $type);
+        if ($nameError=="" && $priceError ==""  && $descriptionError =="" && $imageError == "" && $typeError=="") {
+            updateDetails($connection, $id, $name, $price, $description, $image_path, $type);
             echo "<script>alert('Product details updated successfully!');window.location.href = 'viewproduct.php?id=$id';</script>";
 
         }  
@@ -106,11 +93,12 @@
         $sizeError = validateSelect($size);
         $colorError = validateSelect($color);
         if ($colorError=="" && $sizeError=="") {
-            addStock($connection, $id, $size, $color, $stock);
-            echo "<script>alert('Product details updated successfully!');window.location.href = 'viewproduct.php?id=$id';</script>";
-
+            $sizeError = checkStock($connection, $id, $size, $color, $stock);
+            if ($sizeError == "") {
+                addStock($connection, $id, $size, $color, $stock);
+                echo "<script>alert('Product details updated successfully!');window.location.href = 'viewproduct.php?id=$id';</script>";
+            }
         }
-
     }
     if (isset($_GET['id']) && isset($_GET['stock'])) {
         $stock_id = $_GET['stock'];
@@ -236,28 +224,18 @@
                     <div class="input-box">
                         <label for="">Category</label><br>
                         <div>
-                            <select name="main-category" id="">
-                                <option value="select">Select main category</option>
-                                <?php
-                                    while($main = mysqli_fetch_assoc($mainCategories)) {
-                                        echo "<option value='" . $main['main_category_id'] . "'";
-                                        if ($main['category_name'] == $main_category) echo 'selected';
-                                        echo ">" . $main['category_name'] . "</option>";
-                                    }
-                                ?>
-                            </select>
                             <select name="type" id="">
                                 <option value="select">Select sub category</option>
                                 <?php
                                     while($ty = mysqli_fetch_assoc($types)) {
                                         echo "<option value='" . $ty['sub_category_id'] . "'";
-                                        if ($ty['category_name'] == $type) echo 'selected';
-                                        echo ">" . $ty['category_name'] . "</option>";
+                                        if ($ty['sub_category_id'] == $category_id) echo 'selected';
+                                        echo ">" . $ty['main'] . " - " . $ty['sub'] . "</option>";
                                     }
                                 ?>
                             </select>
                         </div>
-                        <small><?php echo $main_categoryError . " " .  $typeError . " " . $categoryError; ?></small>
+                        <small><?php echo   $typeError ?></small>
                     </div>
 
                     <button style="font-size: 16px;padding:10px 15px;margin-bottom:20px;" name="update-details">Update details</button>
@@ -400,9 +378,6 @@
         if ($field == "") {
             return "Product name is required!";
         }
-        else if ((preg_match("/[^a-zA-Z0-9 -]/", $field))) {
-            return "Name cannot have special characters!";
-        }
         return "";
     }
     function validate_price($field) {
@@ -447,20 +422,27 @@
         }
         return "Invalid category!";
     }
-    function updateDetails($connection, $id, $name, $price, $description, $image_path, $main_category, $type){
+    function updateDetails($connection, $id, $name, $price, $description, $image_path, $type){
         if ($image_path == "") {
             mysqli_query($connection, "update products set product_name = '$name', price = $price, description = '$description' where product_id = $id");
         }else {
             mysqli_query($connection, "update products set product_name = '$name', price = $price, description = '$description', image_url = '$image_path' where product_id = $id");
         }
 
-        mysqli_query($connection, "update product_category set category_id = " . getCategory($connection, $main_category, $type) . " where product_id = $id") ;
+        mysqli_query($connection, "update product_category set category_id = $type where product_id = $id") ;
        
 
     }
 
     function addStock($connection, $id, $size, $color, $stock) {
         mysqli_query($connection, "insert into product_stock(product_id, size_id, color_id, stock_qty) values ($id, $size, $color, $stock)");
+    }
+    function checkStock($connection, $id, $size, $color) {
+        $is_already_exists = mysqli_query($connection, "select * from product_stock where product_id = $id and size_id = $size and color_id = $color");
+        if (mysqli_num_rows($is_already_exists) > 0) {
+            return "The stock already exists!";
+        }
+        return "";
     }
 
     function updateQuantity($connection, $stock_id, $qty){

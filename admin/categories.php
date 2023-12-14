@@ -111,6 +111,7 @@
                             <tr>
                                 <th>Image</th>
                                 <th>Name</th>
+                                <th>Description</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -128,6 +129,7 @@
                                                 <img src="../uploadedImages/<?php echo $items['image_url'];?>" width="80px" height="80px" alt="<?= $items['category_name'];?>">
                                             </td>
                                             <td><?=$items['category_name'];?></td>
+                                            <td><?=$items['description'];?></td>
                                             <td align="center" style=>
                                                 <a href="editmaincategory.php?id=<?php echo $items['main_category_id'] ?>" style="display:inline-block"><button style='font-size:14px;padding:5px 8px;'><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
                                                 <a href="editmaincategory.php?delete=<?php echo $items['main_category_id'] ?>" style="display:inline-block" onclick="return confirm('Are you sure? Do you want to delete main category <?php echo $items['category_name'];?> ?')"><button style='font-size:14px;padding:5px 8px;' class='delete'><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button></a>

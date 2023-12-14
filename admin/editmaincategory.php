@@ -13,6 +13,7 @@
         $category = mysqli_fetch_assoc($categoryResult);
 
         $name = $category['category_name'];
+        $description = $category['description'];
         
     } 
     
@@ -22,12 +23,14 @@
         mysqli_query($connection, "delete from main_category where main_category_id = $id");
         echo "<script>alert('Main category deleted successfully!');window.location.href = 'categories.php'</script>";
     } 
-    $imageError = "";$nameError = "";
+    $imageError = "";$nameError = "";$descriptionError = "";
 
     
     if (isset($_POST['update'])) {
         $name = sanitizeMySQL($connection, $_POST['name']);
         $nameError = validate_name($name);
+        $description = sanitizeMySQL($connection, $_POST['description']);
+        $descriptionError = validate_description($description);
 
         $image_path = "";
         if (isset($_FILES['image']) ) {
@@ -41,11 +44,11 @@
             }
         }
 
-        if($nameError=="" && $imageError=="") {
+        if($nameError=="" && $imageError=="" && $descriptionError == "") {
             if ($image_path=="") {
-                mysqli_query($connection, "update main_category set category_name = '$name' where main_category_id = $id");
+                mysqli_query($connection, "update main_category set category_name = '$name', description = '$description' where main_category_id = $id");
             }else {
-                mysqli_query($connection, "update main_category set category_name = '$name', image_url= '$image_path' where main_category_id = $id");
+                mysqli_query($connection, "update main_category set category_name = '$name', description = '$description', image_url= '$image_path' where main_category_id = $id");
             }
             echo "<script>alert('Main category updated successfully!');window.location.href = 'categories.php'</script>";
         }
@@ -134,6 +137,11 @@
                     <small><?php echo $nameError ?></small>
                 </div>
                 <div class="input-group">
+                    <label for="">Main category description</label>
+                    <input type="text" name="description" value="<?php echo $description ?>">
+                    <small><?php echo $descriptionError ?></small>
+                </div>
+                <div class="input-group">
                     <label for="">New image</label>
                     <input type="file" name="image" accept=".jpeg, .jpg, .png, .webp">
                     <small><?php echo $imageError ?></small>
@@ -183,6 +191,15 @@
         }
         else if ((preg_match("/[^a-zA-Z0-9 -]/", $field))) {
             return "Name cannot have special characters!";
+        }
+        return "";
+    }
+    function validate_description($field) {
+        if ($field == "") {
+            return "Description is required!";
+        }
+        else if (strlen($field)>100) {
+            return "Decription can have atmost 100 characters!";
         }
         return "";
     }
