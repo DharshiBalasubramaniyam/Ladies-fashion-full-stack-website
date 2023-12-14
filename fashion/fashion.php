@@ -133,7 +133,6 @@
         unset($_SESSION['message']);
     }
 
-    // display messages
     if(isset($_SESSION['message'])){
             echo '
                 <form class="message-wrapper" action="fashion.php?sub=' . $selected_sub_category_id  . '" method="post">
@@ -147,7 +146,6 @@
     }
 ?> 
 
-<!-- onclick="this.parentElement.remove()"  -->
 <!DOCTYPE html>
 <head>
    <meta charset="UTF-8">
@@ -159,10 +157,12 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    
 
-    <!-- sub header, items fetched from the database -->
-   <section class="sub_header">
+    <?php
+        if(isset($selected_sub_category_id)){
+    ?>
+
+    <section class="sub_header">
         <div class="flex">
             <a href="fashion.php?main=<?php echo $main_category_id ?>" class="sub-logo"><?php echo $main_category_name ?></a>
         </div>
@@ -182,11 +182,6 @@
             </div>
         </div>   
    </section>
-   <!-- Sub-header end-->
-
-    <?php
-        if(isset($selected_sub_category_id)){
-    ?>
 
     <section class="products">
             <h1 class="title"><?php echo $sub_catagory_name; ?></h1>  
@@ -313,26 +308,10 @@
         </section>
 
 
-    <?php }else { ?>
+    <?php } else { 
     
-        <section class="Categories">
-            <?php
-            foreach($categories as $category){
-                $imgQuery = "select image_url from products p 
-                            inner join product_category c on p.product_id = c.product_id
-                            where c.category_id =" . $category['sub_category_id'] . " limit 1";
-                $image_res = mysqli_query($connection, $imgQuery);
-                $img = mysqli_fetch_assoc($image_res)['image_url'];
+            echo "<script>window.location.href = '../shop/index.php'</script>";
 
-                echo "<div class='box'>";
-                echo "<img class='image' src='../uploadedImages/$img'>";
-                echo "<a href='fashion.php?sub=" . $category['sub_category_id'] . "'><button class='option_btn'>Shop " . $category['category_name'] . "</button></a>";
-                echo "</div>";
-            }
-            ?>
-        </section>
-
-     <?php
         }
         include('../shop/footer.php');
      ?>

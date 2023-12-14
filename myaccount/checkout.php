@@ -152,7 +152,7 @@
                         <small><?php echo $address2Error; ?></small>
                     </div>
                 </div>
-                <button type="submit" name="proceed">Proceed to payment</button>
+                <button type="submit" name="proceed" style="padding: 7px 15px; font-size:16px;">Proceed to payment</button>
             </form>
             <div class="summary-wrapper">
                 <div class="summary-box">
@@ -170,7 +170,7 @@
                         echo "</table>";
                         echo "<h4 style='font-weight:600;'>Sub total: Rs. " . getSubtotal($connection, $_SESSION['user_id']) . "</h4>";
                     ?>
-                    <a href="#" style="font-size: 15px;">Edit cart</a>
+                    <a href="cart.php" style="font-size: 15px;">Edit cart</a>
                 </div>
             </div>
         </div>

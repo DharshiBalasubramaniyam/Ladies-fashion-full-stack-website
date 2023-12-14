@@ -51,7 +51,10 @@ html{
     border-radius: 0;
     padding: 4px 5px;
     cursor: pointer;
-    transition: transform 0.3s ease;    
+    transition: 0.3s ease;    
+}
+.sub_header .items div button:not(.active):hover {
+    background-color: rgb(236, 236, 236);
 }
 .sub_header .items div button.active {
     border-bottom: 2px solid var(--pink);

@@ -98,7 +98,7 @@
                         </div>
                     </div>
                 
-                    <button type="submit" name="confirmPaymentMethod" id="confirmPaymentMethod" style="opacity:0.2; pointer-events:none">Confirm payment method</button>
+                    <button type="submit" name="confirmPaymentMethod" id="confirmPaymentMethod" style="opacity:0.2; pointer-events:none;padding: 7px 15px; font-size:16px;">Confirm payment method</button>
 
                 <?php } else if ($_SESSION['order_shipping']['payment_method']== "credit card/debit card") { ?>
                         <div class="row">
@@ -134,7 +134,7 @@
                                 <small><?php echo $expiryError; ?></small>
                             </div>
                         </div>
-                        <button type="submit" name="confirmCardOrder">Confirm Order</button>
+                        <button type="submit" name="confirmCardOrder" style="padding: 7px 15px; font-size:16px;">Confirm Order</button>
 
                 <?php }else if  ($_SESSION['order_shipping']['payment_method'] == "cash at delivary")  { ?>
                         <div class="row">
@@ -146,7 +146,7 @@
                         <div class="row">
                             Cash payment of Rs. 50 is added with your sub total.
                         </div>
-                        <button type="submit" name="confirmAtDelivaryOrder">Confirm order</button>
+                        <button type="submit" name="confirmAtDelivaryOrder" style="padding: 7px 15px; font-size:16px;">Confirm order</button>
                 <?php } ?>
             </form>
             
@@ -250,8 +250,8 @@
         if ($field == "") {
             return "This field is required!";
         }
-        else if ((!preg_match("/^\d{4} \d{4} \d{4} \d{4}$/", $field))) {
-            return "Card number must in format xxxx xxxx xxxx xxxx!";
+        else if ((!preg_match("/^\d{4}\d{4}\d{4}\d{4}$/", $field))) {
+            return "Card number must have 16 digits!";
         }
         return "";
     }

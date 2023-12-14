@@ -39,53 +39,23 @@
     <section class="home" id="home">
         <div class="swiper home-slider">
           <div class="swiper-wrapper">
-                <div class="swiper-slide slide" style="background: rgba(0,0,0,0.5)url(images/officewear.webp);background-repeat:no-repeat; background-size:cover;background-blend-mode: darken;">
-                  <div class="content">
-                    <span>OFFICE WEAR</span>
-                    <h3>Work in Style</h3>
-                    <a href="../fashion/fashion.php?main=1" class="button">Shop Now</a>
-                  </div>
-                </div>
 
-                <div class="swiper-slide slide" style="background: rgba(0,0,0,0.5)url(images/casual\ wear.webp);background-repeat:no-repeat; background-size:cover;background-blend-mode: darken; ">
-                  <div class="content">
-                    <span>CASUAL WEAR</span>
-                    <h3>Comfy | Unique | Stylish</h3>
-                    <a href="../fashion/fashion.php?main=2" class="button">Shop Now</a>
-                  </div>
-                </div>
-
-                <div class="swiper-slide slide" style="background: rgba(0,0,0,0.5)url(images/partywear.jpeg); background-repeat:no-repeat; background-size:cover;background-blend-mode: darken;">
-                  <div class="content">
-                    <span>PARTY WEAR</span>
-                    <h3>Unleash your style and shine at every event</h3>
-                    <a href="../fashion/fashion.php?main=3" class="button">Shop Now</a>
-                  </div>
-                </div>
-
-                <div class="swiper-slide slide" style="background: rgba(0,0,0,0.5)url(images/footwear.jpg); background-repeat:no-repeat; background-size:cover;background-blend-mode: darken;">
-                  <div class="content">
-                    <span>FOOT WEAR</span>
-                    <h3>Elevate your look</h3>
-                    <a href="../fashion/fashion.php?main=5" class="button">Shop Now</a>
-                  </div>
-                </div>
-          
-                <div class="swiper-slide slide" style="background: rgba(0,0,0,0.5)url(images/accessories.jpg); background-repeat:no-repeat; background-size:cover;background-blend-mode: darken;">
-                  <div class="content">
-                    <span>ACCESSORIES</span>
-                    <h3>Discover a world of trendy accessories</h3>
-                    <a href="../fashion/fashion.php?main=4" class="button">Shop Now</a>
-                  </div>
-                </div>
-
-                <div class="swiper-slide slide" style="background: rgba(0,0,0,0.5)url(images/beauty\ products.webp); background-repeat:no-repeat; background-size:cover;background-blend-mode: darken;">
-                  <div class="content">
-                    <span>BEAUTY PRODUCTS</span>
-                    <h3>Enhance your natural beauty</h3>
-                    <a href="../fashion/fashion.php?main=6" class="button">Shop Now</a>
-                  </div>
-                </div>
+                <?php 
+                    $main_category_res = mysqli_query($connection, "SELECT * FROM main_category")
+                    or die('Category query failed');
+                    $main_categories = mysqli_fetch_all($main_category_res, MYSQLI_ASSOC);
+                    
+                    foreach ($main_categories as $main) {
+                      $image = $main['image_url'];$name = $main['category_name'];$description = $main['description'];$id = $main['main_category_id'];
+                      echo "<div class='swiper-slide slide' style='background: rgba(0,0,0,0.5)url(../uploadedImages/$image);background-repeat:no-repeat; background-size:cover;background-blend-mode: darken;'>
+                              <div class='content'>
+                                <span style='text-transform:uppercase;'>$name</span>
+                                <h3>$description</h3>
+                                <a href='../fashion/fashion.php?main=$id' class='button'>Shop Now</a>
+                              </div>
+                            </div>";
+                    }
+                ?>
           </div>
 
           <div class="swiper-button-next"></div>

@@ -17,7 +17,7 @@
                         or mc.category_name like '%$search_word%'";
         $search_res = mysqli_query($connection, $productSql);
    }else {
-    header('location:../shop/index.php');
+     header('location:../shop/index.php');
    }
     
 
