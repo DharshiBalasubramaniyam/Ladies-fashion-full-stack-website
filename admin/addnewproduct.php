@@ -63,12 +63,23 @@
     }
 
     if (isset($_GET['delstk'])) {
+        $name = sanitizeMySQL($connection, $_POST['name']);
+        $price = sanitizeMySQL($connection, $_POST['price']);
+        $description = sanitizeMySQL($connection, $_POST['description']);
+        $sub_category = sanitizeMySQL($connection, $_POST['sub_category']);
         unset($_SESSION['stock'][$_GET['delstk']]);
+        if (count($_SESSION['stock'])==0) {
+            unset($_SESSION['stock']);
+        }
         echo "<script>window.location.href = 'addnewproduct.php';</script>";
 
     }
 
     if(isset($_POST['add-color'])) {
+        $name = sanitizeMySQL($connection, $_POST['name']); 
+        $price = sanitizeMySQL($connection, $_POST['price']);
+        $description = sanitizeMySQL($connection, $_POST['description']);
+        $sub_category = sanitizeMySQL($connection, $_POST['sub_category']);
         $new_color = sanitizeMySQL($connection, $_POST['new-color']);
         if ($new_color=="") {
             echo "<script>alert('color name is required!')</script>";
@@ -80,6 +91,10 @@
     }
 
     if(isset($_POST['add-size'])) {
+        $name = sanitizeMySQL($connection, $_POST['name']); 
+        $price = sanitizeMySQL($connection, $_POST['price']);
+        $description = sanitizeMySQL($connection, $_POST['description']);
+        $sub_category = sanitizeMySQL($connection, $_POST['sub_category']);
         $new_size = sanitizeMySQL($connection, $_POST['new-size']);
         if ($new_size=="") {
             echo "<script>alert('size name is required!')</script>";
@@ -165,7 +180,7 @@
         <div class="container products-container">
             <h1>Add new product</h1>
         
-                <form action="" method="post" class="form" enctype="multipart/form-data">
+                <form action="" method="post" class="form product-form" enctype="multipart/form-data">
 
                     <div class="input-group">
                         <label for="name">Product Name</label><br>
@@ -186,7 +201,7 @@
                     </div>
 
                     <div class="input-box">
-                        <label for="">Edit product image</label>
+                        <label for="">Product image</label>
                         <input type="file" name="image" accept=".jpeg, .jpg, .png, .webp">
                         <small><?php echo $imageError ?></small>
                     </div>
@@ -261,29 +276,29 @@
                         </div>
                     </div>
 
-
                     <div class="input-group">
                         <button type="submit" name="add-product" style="margin:0 auto;">Add product</button>
                     </div>
+
+                    <section class="pop-up-container">
+                            <div class="add-color">
+                                <i class="fas fa-times"></i>
+                                <h2>Add new color</h2>
+                                <input type="text" name="new-color" placeholder="Enter color name">
+                                <button type="submit" name="add-color">Add color</button>
+                            </div>
+                            <div class="add-size">
+                                <i class="fas fa-times"></i>
+                                <h2>Add new size</h2>
+                                <input type="text" name="new-size" placeholder="Enter size name">
+                                <button type="submit" name="add-size">Add size</button>
+                            </div>
+                    </section>
                 </form>
         </div>
     </main>
 
-    <div class="pop-up-container">
-        <form class="add-color" method="post" action="addnewproduct.php">
-            <i class="fas fa-times"></i>
-            <h2>Add new color</h2>
-            <input type="text" name="new-color" placeholder="Enter color name">
-            <button type="submit" name="add-color">Add color</button>
-        </form>
-
-        <form class="add-size" method="post" action="addnewproduct.php">
-            <i class="fas fa-times"></i>
-            <h2>Add new size</h2>
-            <input type="text" name="new-size" placeholder="Enter size name">
-            <button type="submit" name="add-size">Add size</button>
-        </form>
-    </div>
+    
 
     <footer>
         &copy; copyright  @ <?php echo date('Y'); ?> by <span style="color: var(--pink);">Pink Pearl</span>

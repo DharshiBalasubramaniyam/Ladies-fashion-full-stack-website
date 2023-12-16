@@ -294,28 +294,27 @@
                         <button type="submit" style="background-color:red;padding:7px 15px;font-size:16px;margin-top:8px;" name="delete-product" onclick="return confirm('Are you sure? Do you want to delete this product?')">Delete</button>
                     </div>
 
+                    <section class="pop-up-container">
+                            <div class="add-color">
+                                <i class="fas fa-times"></i>
+                                <h2>Add new color</h2>
+                                <input type="text" name="new-color" placeholder="Enter color name">
+                                <button type="submit" name="add-color">Add color</button>
+                            </div>
+                            <div class="add-size">
+                                <i class="fas fa-times"></i>
+                                <h2>Add new size</h2>
+                                <input type="text" name="new-size" placeholder="Enter size name">
+                                <button type="submit" name="add-size">Add size</button>
+                            </div>
+                    </section>
+
 
                 </form>
             </div>
         </div>
         
     </main>
-
-    <div class="pop-up-container">
-        <form class="add-color" method="post" action="viewproduct.php?id=<?php echo $id  ?>">
-            <i class="fas fa-times"></i>
-            <h2>Add new color</h2>
-            <input type="text" name="new-color" placeholder="Enter color name">
-            <button type="submit" name="add-color">Add color</button>
-        </form>
-
-        <form class="add-size" method="post" action="viewproduct.php?id=<?php echo $id  ?>">
-            <i class="fas fa-times"></i>
-            <h2>Add new size</h2>
-            <input type="text" name="new-size" placeholder="Enter size name">
-            <button type="submit" name="add-size">Add size</button>
-        </form>
-    </div>
 
     <footer>
         &copy; copyright  @ <?php echo date('Y'); ?> by <span style="color: var(--pink);">Pink Pearl</span>

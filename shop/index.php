@@ -94,7 +94,7 @@
       </div>
 
       <div class="banner">
-          <img src="images/makeup.avif" alt="">
+          <img src="images/makeup.jpg" alt="">
           <div class="b-content">
             <h3>Our Makeup Products</h3>
             <a href="../fashion/fashion.php?sub=49" class="button">Shop Now</a>

@@ -465,23 +465,26 @@ form > div input,  form > div select,  form > div textarea{
 }
 
 /* -------------------------------------pop up styles ------------------------------------------------------------------- */
+.product-form {
+    position: relative;
+}
 .pop-up-container {
     display: none;
     position: fixed;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     top: 0;
-    left: 0;
+    left: 0;right: 0;
+    padding: 10px;
     background: rgba(0, 0, 0, 0.8);
     z-index: 2000;
-    /* display: flex; */
     align-items: center;
     justify-content: center;
 }
 .pop-up-container h2 {
     color: var(--pink);
 }
-.pop-up-container form {
+.pop-up-container > div {
     position: relative;
     width: 100%;
     max-width: 400px;
@@ -494,16 +497,16 @@ form > div input,  form > div select,  form > div textarea{
     border-radius: 5px;
     box-shadow: 0 0 10px var(--lightpink);
 }
-.pop-up-container form input {
+.pop-up-container > div input {
     padding: 10px;
     font-size: 16px;
     width: 100%;
 }
-.pop-up-container form button {
+.pop-up-container > div button {
     padding: 7px 15px;
     font-size: 16px;
 }
-.pop-up-container form .fa-times {
+.pop-up-container > div .fa-times {
     position: absolute;
     top: 1rem;
     right: 1.5rem;
