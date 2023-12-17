@@ -18,6 +18,9 @@
     --lightpink: rgb(255, 227, 232);
     --pink: #FF039E;
 }
+::-ms-reveal {
+    display: none;
+}
 button, .button {
     padding: 10px 25px;
     background-color: var(--pink);

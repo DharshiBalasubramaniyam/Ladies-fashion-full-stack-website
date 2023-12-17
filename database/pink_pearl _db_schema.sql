@@ -53,7 +53,7 @@ INSERT INTO `category` (`sub_category_id`, `main_category_id`, `category_name`) 
 (36, 3, 'Frocks'),
 (37, 3, 'Lehengas'),
 (38, 5, 'shoes'),
-(39, 5, 'Sneakers'),
+(39, 5, 'Heels'),
 (40, 5, 'Boots'),
 (41, 5, 'Sandals'),
 (42, 5, 'Slippers'),
