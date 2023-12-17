@@ -17,39 +17,35 @@ header {
     height: 47px;
 }
 .top-header .search {
-    position: relative;
+    /* position: relative; */
     width: 400px;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .top-header .search input{
     padding: 8px 50px 8px 15px;
-    width: 400px;
-    border-radius: 5px;
+    width: 360px;
+    height: 40px;
+    border-radius: 5px 0 0 5px;
     border: 2px solid var(--grey);
+    border-right: none;
     font-size: 15px;
 }
 .top-header .search button {
-    position: absolute;
-    top: 0;
-    right:0;
-    height: 100%;
+    height: 40px;
     width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid var(--grey);
-    border-left: 2px solid var(--pink);
-    /* border-radius: 0; */
-    background-color: transparent;
+    border-radius: 0 5px 5px 0;
     font-size: 18px;
-    background-color: var(--pink);
     color: var(--white);
 }
 .top-header .search button:hover {
     background-color: var(--grey);
-    border-left: 2px solid var(--grey);
     color: var(--white);
-
 }
 .top-header input:focus {
     border: 2px solid var(--pink);
@@ -120,6 +116,9 @@ header .search-body {
     header .laptop-setup {
         display: none;
     }
+    header .laptop-setup.search {
+        display: none;
+    }
     header .mobile-setup, header .toggle-menu {
         display: inline-block;
     }
@@ -145,29 +144,30 @@ header .search-body {
         left: 0;
     }
     header .search-body .search{
-        position: relative;
         width: 98%;
         height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     header .search-body .search input{
         padding: 8px 50px 8px 15px;
-        width: 100%;
-        border-radius: 5px;
+        width: 97%;
+        height: 40px;
+        border-radius: 5px 0 0 5px;
         border: 2px solid var(--grey);
+        border-right: none;
         font-size: 15px;
     }
     header .search-body .search input:focus{
         border: 2px solid var(--pink);
     }
     header .search-body .search button {
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 42px;
-        width: 40px;
+        height: 40px;
+        width: 3%;
         border: 2px solid var(--grey);
-        border-left: 2px solid var(--pink);
-        background-color: transparent;
+        border-left: none;
+        border-radius: 0 5px 5px 0;
         font-size: 18px;
         background-color: var(--pink);
         color: var(--white);
