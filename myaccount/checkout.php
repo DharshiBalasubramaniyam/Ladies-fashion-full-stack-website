@@ -84,6 +84,7 @@
         </div>
 
         <div class="progress">
+
                 <div class="progress-bar shipping">
                     <span><i class="fa fa-check" aria-hidden="true"></i><br><small>Shipping</small></span>
                     <span><i class="fa fa-check" aria-hidden="true"></i><br><small>Payment</small></span>
@@ -92,9 +93,11 @@
                 </div>
         </div>
 
+
         <div class="content checkout-wrapper">
             
             <form action="checkout.php" method="post">
+
                 <div class="row">
                     <div class="input-box">
                         <label for="">First Name</label>
@@ -152,7 +155,11 @@
                         <small><?php echo $address2Error; ?></small>
                     </div>
                 </div>
-                <button type="submit" name="proceed" style="padding: 7px 15px; font-size:16px;">Proceed to payment</button>
+                <div style="width:100%;display:flex;justify-content:right;gap:15px;align-items:end;">
+                    <a href="cart.php" style="padding: 7px 15px; font-size:16px;color:var(--pink)">Cancel</a>
+                    <button type="submit" name="proceed" style="padding: 7px 15px; font-size:16px;">Proceed to payment</button>
+                </div>
+                
             </form>
             <div class="summary-wrapper">
                 <div class="summary-box">
