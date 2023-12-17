@@ -1,8 +1,8 @@
 <?php
   
-  session_start();
   include '../database/dbconnection.php';
-  
+
+  include '../main-header/header.php';
 
   if(isset($_POST['login'])){
     $email=mysqli_real_escape_string($connection,$_POST['email']);
@@ -41,12 +41,14 @@
        
        
             } else {
-                $message = 'Incorrect email or password!!';
+                $failed_message = 'Incorrect email or password!!';
             }
-    } else {
-        $message = 'Incorrect email or password!!';
+        } else {
+            $failed_message = 'Incorrect email or password!!';
+        }
+    }else {
+        $failed_message = 'Incorrect email or password!!';
     }
-}
   }
 
 
@@ -62,7 +64,7 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
+    <link rel="stylesheet" href="../index.css">
 
 </head>
 <body>
@@ -74,12 +76,17 @@
             <h2>Login</h2>
 
             <div class="input">
-                <input type="email" name="email" id="email" class="input" placeholder="Enter your Email" required>
+                <span style="font-size: 15px;text-align:center"><?php if(isset($failed_message )) echo  $failed_message ;  ?></span>
+            </div>
+
+            <div class="input">
+                <input type="email" name="email" id="email" class="input" placeholder="Enter your Email" value="<?php if(isset($email )) echo $email ;  ?>">
                 <span><?php if(isset($message )) echo $message ;  ?></span>
             </div>
 
             <div class="input">
-                <input type="password" name="password" id="password" class="input" placeholder="Enter the password" required>
+                <input type="password" name="password" id="password" class="input" placeholder="Enter the password" value="<?php if(isset($password )) echo $password ;  ?>">
+                <div class="view"></div>
             </div>
 
             <input type="submit" name="login" value="Login" class="btn">
@@ -89,5 +96,23 @@
         </form>
     </section>
 
+
+    <script>
+        const view = document.querySelectorAll(".view");
+
+        view.forEach(v => {
+            v.addEventListener('click', ()=>{
+                if (v.classList.contains('active')){
+                    v.classList.remove('active');
+                    v.previousElementSibling.setAttribute('type', 'password');
+                }else {
+                    v.classList.add('active');
+                    v.previousElementSibling.setAttribute('type', 'text');
+                }
+            })
+        });
+
+    </script>
+    
 </body>
 </html>

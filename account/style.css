@@ -37,27 +37,22 @@ body{
 
 }
 
-@media (max-width:900px){
-    .form_container{
-        width: 80%;
-    }
-  }
+
 
 
  .container{
-    background-color: whitesmoke;
-    width: 40%;
-    min-height: 350px;
-    margin: 25vh auto;
+    background-color: var(--lightpink);
+    width: 100%;
+    min-height: 100vh;
+    /* margin: 25vh auto; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 8px;
     padding: 10px 10px;
-    border: 2px solid black;
 } 
 
 @media (max-width:900px){
-    .container{
-        width: 80%;
-    }
   }
 
 
@@ -67,23 +62,29 @@ h2{
     margin-top: 1rem;
     margin-bottom: 1.3rem;
 }
+.container form {
+    width: 100%;
+    max-width: 500px;
+    height: max-content;
+    background-color: var(--white);
+    border: 2px solid black;
+    padding: 15px;box-shadow: 0 0 25px var(--grey);border-radius: 5px;
 
+}
 .input{
     display: flex;
     flex-direction: column;
-    margin: 15px auto ;
+    margin: 10px 0;
     position: relative;
 }
 .input input{
     
     border-radius: 5px;
-    width: 90%;
+    width: 100%;
     box-sizing: border-box;
-    padding: 8px;
-    font-size: 12px;
+    padding: 10px;
+    font-size: 15px;
     border:1.5px solid var(--grey);
-    margin-bottom: 3px;
-    margin-left: 5%;
     justify-content: center;
     align-items: center;
 
@@ -92,7 +93,6 @@ h2{
 .input span{
     color: #ff0000;
     font-size: 11px;
-    margin-left: 5%;
 
     
 }
@@ -133,5 +133,24 @@ h2{
     color:var(--pink) ;
     text-decoration: none;
 
+}
+form .input{
+    position: relative;
+}
+
+form .input .view {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    background-image: url('../uploadedImages/hide.png');
+    background-position: bottom;
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 0;
+    top: -4px;
+}
+form .input .view.active {
+    background-image: url('../uploadedImages/view.png');
 }
 
