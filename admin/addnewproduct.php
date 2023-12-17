@@ -63,10 +63,6 @@
     }
 
     if (isset($_GET['delstk'])) {
-        $name = sanitizeMySQL($connection, $_POST['name']);
-        $price = sanitizeMySQL($connection, $_POST['price']);
-        $description = sanitizeMySQL($connection, $_POST['description']);
-        $sub_category = sanitizeMySQL($connection, $_POST['sub_category']);
         unset($_SESSION['stock'][$_GET['delstk']]);
         if (count($_SESSION['stock'])==0) {
             unset($_SESSION['stock']);

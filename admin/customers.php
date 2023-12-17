@@ -117,7 +117,7 @@
                 </div>
                 <span><?php echo $offset+1; ?> - <?php echo $offset+mysqli_num_rows($customersResult); ?> of <?php echo $totalNoOfCustomers; ?> records </span>
                 <a href="<?php echo "customers.php?offset=". $offset-$limit . "&searchword=$searchword" ?>" class="<?php if ($offset==0) echo 'disabled' ?>"><button style="font-size: 25px;padding: 0px 15px" ><</button></a>
-                <a href="<?php echo "customers.php?offset=". $offset+$limit . "&searchword=$searchword" ?>" class="<?php if ($offset==$finalOffset) echo 'disabled' ?>"><button style="font-size: 25px;padding: 0px 15px" >></button></a>
+                <a href="<?php echo "customers.php?offset=". $offset+$limit . "&searchword=$searchword" ?>" class="<?php if ($offset+mysqli_num_rows($customersResult) == $totalNoOfCustomers) echo 'disabled' ?>"><button style="font-size: 25px;padding: 0px 15px" >></button></a>
             </div>
 
             <div class="product-list main-table">
