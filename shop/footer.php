@@ -13,8 +13,8 @@
 
    <div class="box">
       <h3>quick links</h3>
-      <a href="review.php">Reviews</a>
-      <a href="#contact">Contact Us</a>
+      <a href="../shop/review.php">Reviews</a>
+      <a href="../shop/index.php#contact">Contact Us</a>
       <a href="../myaccount/wishlist.php">My wishlist</a>
       <a href='../myaccount/cart.php'>My cart</a>
       <a href='../myaccount/profile.php'>My Account</a>

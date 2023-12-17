@@ -101,6 +101,7 @@ color: var(--lightpink);
     box-shadow: 0 0 20px var(--grey);
     transition: 0.3s;
     cursor: pointer;
+    padding: 10px;
 }
 .box_top {
   display: flex;
@@ -183,6 +184,7 @@ color: var(--lightpink);
   color: var(--black);
   margin-bottom: 1rem;
   margin-top: 0.8rem;
+  font-weight: 600;
 }
 
 .footer .box{
@@ -347,9 +349,6 @@ color: var(--lightpink);
     max-width: 400px; 
 
   }
-  .review_box_container{
-    padding: 0 1%;
-  }
  
 }
 
@@ -458,7 +457,22 @@ text-transform: uppercase;
   .review_box_container {
     grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
 }
-  
+  .heading h1{
+    font-size: 3rem;
+  }
+  .about .about-content h3{
+    font-size: 1.6rem;
+    }
+    .about .about-content p{
+      font-size: 0.8rem;
+    }
+    .about{
+      padding: 2rem;
+    
+    }
+    .heading{
+      min-height: 30vh;
+    }
 }
 
 h2{
