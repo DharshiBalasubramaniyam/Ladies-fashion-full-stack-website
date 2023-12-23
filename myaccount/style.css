@@ -53,7 +53,8 @@ button {
 } 
 .myaccount ul li {
     flex: 1 1 400px;
-    box-shadow: 0 0 25px var(--grey);
+    /* box-shadow: 0 0 25px var(--grey); */
+    border: 2px solid var(--pink);
     border-radius: 5px;
     margin: 10px 0;
     cursor: pointer;
@@ -63,7 +64,9 @@ button {
     transform: translateY(-5px);
 }
 .myaccount ul li .head {
-    background-color: var(--lightpink);
+    background-color: var(--white);
+    box-shadow: 0 2px 5px var(--grey);
+    border-radius: 5px 5px 0 0;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -74,17 +77,17 @@ button {
     /* color: var(--white); */
 }
 .myaccount ul li .head .delivered {
-    padding: 3px 10px;
+    padding: 3px 10px; border-radius: 25px;
     background-color: rgb(190, 255, 190);
     color: green;
 }
 .myaccount ul li .head .pending {
-    padding: 3px 10px;
+    padding: 3px 10px; border-radius: 25px;
     background-color: rgb(255, 191, 191);
     color: red;
 }
 .myaccount ul li .head .shipped {
-    padding: 3px 10px;
+    padding: 3px 10px; border-radius: 25px;
     background-color: rgb(255, 238, 190);
     color: rgb(128, 96, 0);
 }
@@ -92,7 +95,6 @@ button {
     padding: 5px 10px;
     background-color: transparent;
     color: red;
-    border: none;
     cursor: pointer;
 }
 .myaccount ul li .content{
@@ -572,6 +574,9 @@ button:hover {
     .myaccount{
         padding: 10vh 0 10px;
     }
+    .myaccount ul {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
     .myaccount .content {
         padding: 12px 3%;
     }
@@ -614,7 +619,7 @@ button:hover {
         gap: 15px;
     }
     .myaccount ul {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     } 
     .content.wishlist-wrapper,
     .content .cart-items-wrapper {

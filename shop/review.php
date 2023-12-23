@@ -27,33 +27,34 @@ $all_messages = mysqli_query($connection,"SELECT * from reviews inner join users
 
         <div class="review_box_container">
         <?php
-while($row= mysqli_fetch_assoc($all_messages)){
+        while($row= mysqli_fetch_assoc($all_messages)){
 
-?> 
+        ?> 
             <div class="review_box">
                 <div class="box_top">
                     <div class="profile">
                         <div class="profile_img">
-                        <i class="fa-solid fa-user"></i>
-
+                            <i class="fa-solid fa-user"></i>
                         </div>
 
-                    <div class="name_user">
-                        <strong><?php echo $row['username']; ?></strong>
-                        <span><?php echo $row['email']; ?></span>
-                    </div>
-                    </div>
-                    
+                        <div class="name_user">
+                            <strong><?php echo $row['username']; ?></strong>
+                            <span><?php echo $row['email']; ?></span>
+                        </div>
+                    </div>       
 
                     <div class="reviews">
-                    <i class="fa-solid fa-star" style="color: #ffe3e8;"></i>
-                    <i class="fa-solid fa-star" style="color: #ffe3e8;"></i>
-                    <i class="fa-solid fa-star" style="color: #ffe3e8;"></i>
-                    <i class="fa-solid fa-star" style="color: #ffe3e8;"></i>
-                    <i class="fa-solid fa-star" style="color: #ffe3e8;"></i>
+                                    <?php
+                                        for ($i=0; $i < $row['num_of_stars']; $i++) {
+                                            echo "<i class='fa-solid fa-star' style='color: var(--pink);'></i>";
+                                        }
+                                        for ($i=0; $i < 5-$row['num_of_stars']; $i++) {
+                                            echo "<i class='fa-solid fa-star' style='color: var(--lightpink);'></i>";
+                                        }
 
-
-                    </div>
+                                    ?>
+                                    
+                                </div>
                 </div>
 
                 <div class="comments">
@@ -61,15 +62,13 @@ while($row= mysqli_fetch_assoc($all_messages)){
                 </div>
 
                 <div class="date">
-                <span><?php echo $row['date']; ?></span>
+                    <span><?php echo $row['date']; ?></span>
                 </div>
 
-
-                
             </div>
-            <?php
-}
-    ?>
+        <?php
+        }
+        ?>
         </div>
 
 

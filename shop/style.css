@@ -158,6 +158,10 @@ color: var(--lightpink);
 .review_box:hover{
   transform: translateY(-10px);
 }
+.review_box .reviews {
+  display: flex;
+  gap: 5px;
+}
 
 /* .date span{
   position: absolute;

@@ -152,12 +152,17 @@
                     
 
                     <div class="reviews">
-                      <i class="fa-solid fa-star" style="color: #FF039E;"></i>
-                      <i class="fa-solid fa-star" style="color: #FF039E;"></i>
-                      <i class="fa-solid fa-star" style="color: #FF039E;"></i>
-                      <i class="fa-solid fa-star" style="color: #FF039E;"></i>
-                      <i class="fa-solid fa-star" style="color: #FF039E;"></i>
-                    </div>
+                                    <?php
+                                        for ($i=0; $i < $row['num_of_stars']; $i++) {
+                                            echo "<i class='fa-solid fa-star' style='color: var(--pink);'></i>";
+                                        }
+                                        for ($i=0; $i < 5-$row['num_of_stars']; $i++) {
+                                            echo "<i class='fa-solid fa-star' style='color: var(--lightpink);'></i>";
+                                        }
+
+                                    ?>
+                                    
+                                </div>
                 </div>
 
                 <div class="comments">
