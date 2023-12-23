@@ -114,6 +114,7 @@
                 <span><a href="orders.php">Orders</a></span> 
                 <span><a href="wishlist.php" class="active">Wishlist</a></span>
                 <span><a href="cart.php">Cart</a></span>
+                <span><a href="review.php">Reviews</a></span>
                 <span><a href="profile.php">Profile</a></span>
             </div>
         </div>

@@ -55,6 +55,7 @@
                 <span><a href="orders.php" class="active">Orders</a></span> 
                 <span><a href="wishlist.php">Wishlist</a></span>
                 <span><a href="cart.php">Cart</a></span>
+                <span><a href="review.php">Reviews</a></span>
                 <span><a href="profile.php">Profile</a></span>
             </div>
         </div>
