@@ -165,12 +165,21 @@ input::placeholder{
 .checkout-wrapper form .row .input-box input:focus{
     border: 2px solid var(--pink);
 }
+.myaccount form .input-box input[type='checkbox'] {
+    display: none;
+}
+.myaccount form .input-box label .star {
+    color: var(--lightpink);font-size: 25px;cursor: pointer;
+}
+.myaccount form .input-box label .star.active {
+    color: var(--pink);
+}
 .myaccount small, .checkout-wrapper form small{
     color: red;
 }
 button:hover {
     background-color: var(--pink);
-} */
+}
 .myaccount > h4 {
     margin-top: 8px;
     cursor: pointer;

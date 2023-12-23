@@ -16,7 +16,18 @@ function handlePaymentMethod(){
     btn.style.opacity = '1';
     btn.style.pointerEvents = 'auto';
 }
+const stars = document.querySelectorAll(".star");
+console.log(stars);
+stars.forEach(st => {
+    st.addEventListener('click', ()=> {
+        if (st.classList.contains("active")) {
+            st.classList.remove("active");
 
+        }else {
+            st.classList.add("active");
+        }
+    })
+});
 function handlePopup() {
     console.log('click');
     let previewContainer = document.querySelector('.products-preview');
