@@ -46,9 +46,9 @@
             <h1>Your Reviews</h1>
             <div class="options">
                 <span><a href="orders.php">Orders</a></span> 
-                <span><a href="wishlist.php" class="active">Wishlist</a></span>
+                <span><a href="wishlist.php">Wishlist</a></span>
                 <span><a href="cart.php">Cart</a></span>
-                <span><a href="review.php">Reviews</a></span>
+                <span><a href="review.php"  class="active">Reviews</a></span>
                 <span><a href="profile.php">Profile</a></span>
             </div>
         </div>
@@ -56,7 +56,9 @@
         <div class="content">
             <?php
                 if (mysqli_num_rows($reviews_result)>0) {
-                    echo "<div class='review_box_container'>";
+                    echo "<a href = 'addreview.php'><button>+ Leave a review</button></a>";
+
+                    echo "<div class='review_box_container' style='justify-content:left;padding:0;margin-top:25px;'>";
                     while ($row = mysqli_fetch_assoc($reviews_result)){
             ?>
 
@@ -100,6 +102,11 @@
             <?php
                     }
                     echo "</div>";
+                }else {
+                    echo "<div class='empty-order-history'>
+                            <h3 style='margin-bottom:25px;'>You haven't written any reviews!</h3>
+                            <a href = 'addreview.php'><button>Leave a review</button></a>
+                        </div>";
                 }
             ?>
         </div>
