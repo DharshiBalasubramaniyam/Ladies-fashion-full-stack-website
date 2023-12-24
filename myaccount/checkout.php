@@ -20,6 +20,12 @@
     $district = $postal = $city =  "";
     $fnameError = $lnameError = $emailError = $phoneError = $districtError = $postalError = $cityError = $address1Error = $address2Error = "";
 
+    $points = 0;
+
+    if (isset($_POST['spend'])) {
+        $points =  $_POST['points'];
+        $_SESSION['points'] = $points;
+    }
 
     if(isset($_POST['proceed'])) {
         if (isset($_POST['fname']))  $fname = sanitizeMySQL($connection,  $_POST['fname']);
@@ -53,7 +59,9 @@
             $_SESSION['order_shipping']['postal'] = $postal;
             $_SESSION['order_shipping']['address1'] = $address1;
             $_SESSION['order_shipping']['address2'] = $address2;
-            $_SESSION['order_shipping']['total'] = getSubtotal($connection, $_SESSION['user_id']);
+            $_SESSION['order_shipping']['total'] = doubleval(getSubtotal($connection, $_SESSION['user_id']) - doubleval($_SESSION['points']));
+            $_SESSION['order_shipping']['points_redeemed'] = $_SESSION['points'];
+            $_SESSION['order_shipping']['points_earned'] = getPoints($connection);
 
             header('location:payment.php');
             // print_r($_SESSION['order_shipping']);
@@ -163,6 +171,33 @@
             </form>
             <div class="summary-wrapper">
                 <div class="summary-box">
+                    <?php 
+                        $user_id = $_SESSION['user_id'];
+                        $rewards_result = mysqli_query($connection, "select current_point_balance from users where user_id = $user_id");
+                        $current_points = mysqli_fetch_assoc($rewards_result)['current_point_balance'];
+                    ?>
+                    <h3>Spend your points</h3>
+                    <?php if ($current_points>0) { ?>
+                        <h4>Choose how many points to spend.</h4>
+                        <h4>You have <span style="font-weight: 600;"><?php echo $current_points ?></span> points to spend.</h4>
+                        <form action="" method="post">
+                            <div class="input-box points">
+                                <div class="label"><span>0</span> <span><?php echo $current_points ?></span></div>
+                                <input type="range" name="points" id="points" min='0' max="<?php echo $current_points ?>" value="<?php echo $points ?>" onchange="handlePoints(this)">
+                            </div>
+
+                            <div class="input-box" style="text-align: left;">
+                                You will get <span style="font-weight: 600;" class="points_display">RS. <?php echo $points ?></span> as discount.
+                            </div>
+                            <div class="input-box">
+                                <button type="submit" name="spend">confirm</button>
+                            </div>
+                        </form>
+                    <?php } else {?>
+                        <h4>You have no points to spend in this order.</h4>
+                    <?php } ?>
+                </div>
+                <div class="summary-box">
                     <h3>Order Summary</h3>
                     <?php
                         echo "<table>";
@@ -175,10 +210,15 @@
                             echo "<tr><td>" . $row2['product_name'] . "</td> <td>" . $row['quantity'] . " x Rs. " . $row2['price'] . "</td> <td>Rs. " . $row['amount']  . "</td></tr>";
                         }
                         echo "</table>";
-                        echo "<h4 style='font-weight:600;'>Sub total: Rs. " . getSubtotal($connection, $_SESSION['user_id']) . "</h4>";
+                        echo "<h4 style='font-weight:600;font-size:16px'>SUB TOTAL&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : Rs. " . getSubtotal($connection, $_SESSION['user_id']) . "</h4>";
+                        echo "<h4 style='font-weight:600;font-size:16px'>DISCOUNT&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : Rs. " . $points . "</h4>";
+                        echo "<h4 style='font-weight:600;font-size:18px'>GRAND TOTAL&nbsp&nbsp&nbsp&nbsp : Rs. " . doubleval(getSubtotal($connection, $_SESSION['user_id']) - doubleval($_SESSION['points'])) . "</h4>";
+                        echo "<h4 style='margin:15px 0;'>YOU WILL EARN " . getPoints($connection) . " POINTS FROM THIS ORDER.</h4>";
                     ?>
                     <a href="cart.php" style="font-size: 15px;">Edit cart</a>
                 </div>
+
+                
             </div>
         </div>
 
@@ -186,6 +226,8 @@
     </div>
 
     <?php include('../shop/footer.php') ?>
+
+    <script src="./myaccount.js"></script>
 </body>
 </html>
 
@@ -256,5 +298,10 @@
             return "Address is required!";
         }
         return "";
+    }
+    function getPoints($connection) {
+        $total = getSubtotal($connection, $_SESSION['user_id']);
+        $points = intval($total/100);
+        return $points;
     }
 ?>

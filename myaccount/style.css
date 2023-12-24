@@ -14,32 +14,44 @@ button {
     background-color: var(--lightpink);
     width: 100%;
     padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 .myaccount .content {
     width: 100%;
     padding: 20px 8%;
 }
 .myaccount .header h1, .myaccount .header p {
-    width:100%; text-align: center;
+    width:100%; text-align: center; color: var(--pink);
 }
 .myaccount .options {
+    width: 100%;
+    padding: 10px;
     font-size: 15px;
     margin: 5px 0;
     display: flex;
-    justify-content: center;
-    gap: 30px;
+    justify-content: center;gap: 10px;
 }
 .myaccount .options span a{
     display: inline-block;
-    padding: 5px 0;
+    padding: 4px 15px;
     transition: 0.3s;
+    width:100px;
+    text-align: center;
+    background-color: transparent;
+    border: 2px solid var(--pink);
+    color: var(--pink);border-radius: 7px;letter-spacing: 1px;
+
 }
-.myaccount .options span a:hover{
-    color: var(--pink);
+.myaccount .options span a:not(.active)hover{
+    color: var(--black);
 }
 .myaccount .options span a.active{
-    color: var(--pink);
-    border-bottom: 2px solid var(--grey);
+    background-color: var(--pink);
+    color: var(--white);
+
 }
 
 
@@ -527,6 +539,7 @@ button:hover {
     padding: 7px 0;
     border-bottom: 1px solid var(--pink);
     color: var(--pink);
+    margin-bottom: 15px;
 }
 .checkout-wrapper .summary-wrapper .summary-box a  {
     text-decoration: underline;
@@ -534,12 +547,38 @@ button:hover {
 .checkout-wrapper .summary-wrapper .summary-box a:hover  {
     color: var(--pink);
 }
+.checkout-wrapper .summary-wrapper .summary-box form {
+    width: 100%;
+    max-width: 400px;
+    padding: 0;
+}
+.checkout-wrapper .summary-wrapper .summary-box form .input-box {
+    width: 100%;
+}
+.checkout-wrapper .summary-wrapper .summary-box form .points {
+    width: 100%;
+    padding: 15px 0;
+}
+.checkout-wrapper .summary-wrapper .summary-box form .points .label {
+    display: flex;
+    justify-content: space-between;
+}
+.checkout-wrapper .summary-wrapper .summary-box form .points .label span {
+    font-weight: 600;
+}
+.checkout-wrapper .summary-wrapper .summary-box form .points input {
+    width: 100%;
+}
+.checkout-wrapper .summary-wrapper .summary-box form button {
+    padding: 5px 15px;
+    font-size: 16px;
+}
 .checkout-wrapper form .row {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: stretch;
-    gap: 15px;
+    gap: 10px;
     margin: 6px 0;
 }
 .checkout-wrapper form .row .input-box {
@@ -578,6 +617,38 @@ button:hover {
 .order-success-box .btns{
     display: flex;
 }
+
+/* ---------------------------------------------------------------rewards styles-------------------------------------------------------------- */
+.rewards-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px; min-height:65vh;
+}
+.rewards-content .points-wrapper {
+    height: 230px;
+    width: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;flex-direction: column;
+    gap: 5px;
+    border-radius: 50%;
+    border: 5px solid var(--pink);
+}
+.rewards-content .points-wrapper h1 {
+    color: var(--pink);
+    font-size: 60px;
+}
+.rewards-content .points-wrapper p {
+    color: var(--pink);
+}
+.rewards-content .reward-description {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    margin-top: 40px;
+} 
 
 @media all and (max-width: 900px) {
     .myaccount{
@@ -647,6 +718,23 @@ button:hover {
     }
     .content .total {
         flex-direction: column;gap: 15px;
+    }
+    .rewards-content .points-wrapper {
+        height: 200px;
+        width: 200px;gap: 0;
+    }
+    .rewards-content .points-wrapper {
+        height: 200px;
+        width: 200px;gap: 0;
+    }
+    .rewards-content .points-wrapper h1 {
+        font-size: 40px;
+    }
+    .rewards-content .points-wrapper p {
+        font-size: 13px;
+    }
+    .myaccount .options {
+        overflow-x: scroll;justify-content: left;
     }
 }
 

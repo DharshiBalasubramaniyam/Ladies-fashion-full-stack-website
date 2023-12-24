@@ -16,6 +16,13 @@ function handlePaymentMethod(){
     btn.style.opacity = '1';
     btn.style.pointerEvents = 'auto';
 }
+
+function handlePoints(e) {
+    const points = document.querySelector(".points_display");
+    points.textContent = "Rs. " + e.value;
+
+}
+
 const stars = document.querySelectorAll(".star");
 console.log(stars);
 stars.forEach(st => {
@@ -28,6 +35,8 @@ stars.forEach(st => {
         }
     })
 });
+
+
 function handlePopup() {
     console.log('click');
     let previewContainer = document.querySelector('.products-preview');

@@ -17,7 +17,7 @@
       <a href="../shop/index.php#contact">Contact Us</a>
       <a href="../myaccount/wishlist.php">My wishlist</a>
       <a href='../myaccount/cart.php'>My cart</a>
-      <a href='../myaccount/profile.php'>My Account</a>
+      <a href='../myaccount/rewards.php'>My Account</a>
    </div>
 
    <div class="box">

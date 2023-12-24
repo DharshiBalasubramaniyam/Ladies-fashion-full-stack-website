@@ -45,7 +45,7 @@
 
                     if (isset($_SESSION['isLogged']) && $_SESSION['isLogged']) {
                         echo "<span class='user laptop-setup'>" . 
-                                 "<a href='../account/logout.php'>sign out</a><a href='../myaccount/orders.php'><i class='fa fa-user-circle-o' aria-hidden='true'></i></a>" .
+                                 "<a href='../account/logout.php'>sign out</a><a href='../myaccount/rewards.php'><i class='fa fa-user-circle-o' aria-hidden='true'></i></a>" .
                              "</span>";
                     }
                     else {

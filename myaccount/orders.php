@@ -52,6 +52,7 @@
             <p>Welcome, <?php echo getUserName($connection); ?>!</p>
             <h1>Your Orders</h1>
             <div class="options">
+                <span><a href="rewards.php">Rewards</a></span> 
                 <span><a href="orders.php" class="active">Orders</a></span> 
                 <span><a href="wishlist.php">Wishlist</a></span>
                 <span><a href="cart.php">Cart</a></span>
