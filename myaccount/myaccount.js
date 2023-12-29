@@ -69,4 +69,13 @@ function handlePopup() {
     });
 }
 
+function decrease(e) {
+    if(e.nextElementSibling.value>0)
+        e.nextElementSibling.value = parseInt(e.nextElementSibling.value) - 1;
+}
+function increase(e) {
+    if(e.previousElementSibling.value<100)
+        e.previousElementSibling.value  = parseInt(e.previousElementSibling.value) + 1;
+}
+
 handlePopup();

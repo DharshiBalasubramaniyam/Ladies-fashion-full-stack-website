@@ -408,7 +408,6 @@ html{
     font-size: 1.4rem;
 }
 
-.products-preview .preview form input,
 .products-preview .preview form select {
     margin-bottom: 1rem;
     padding: 0.3rem;
@@ -416,6 +415,40 @@ html{
     width: 15rem;
     margin: 0 auto; 
     text-transform: capitalize;
+}
+.products-preview .qty-input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.products-preview .qty-input-wrapper div {
+    border: 2px solid var(--grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size:25px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    background-color: var(--white);transition: 0.3s;
+}
+.products-preview .qty-input-wrapper div:hover {
+    background-color: var(--pink);
+    color: var(--white);
+    border: 2px solid var(--pink);
+}
+.products-preview .qty-input-wrapper div:active {
+    opacity: 0.8;
+}
+.products-preview .qty-input-wrapper input {
+    border: 2px solid var(--grey);
+    border-left: none;
+    border-right: none;
+    text-align: right;
+    height: 40px;font-size: 20px;
+    width:40px;
+    background-color: var(--white);
 }
 
 .products-preview .preview form button {

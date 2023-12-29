@@ -250,6 +250,14 @@ button:hover {
     justify-content: center;
     gap: 10px;
 }
+.content .wishlist-card button:not(.remove-item):hover, 
+.content .cart-card .remove-item:hover,
+.myaccount .cart-items-wrapper .cart-card  form button#update:hover,
+.content .wishlist-card .remove-item:hover,
+.myaccount .change-pass-form button:hover{
+    background-color: var(--black);
+    color: var(--white);
+}
 .content .wishlist-card button i {
     color: var(--white);
 }
@@ -351,7 +359,6 @@ button:hover {
     font-size: 1.4rem;
 }
 
-.products-preview .preview form input,
 .products-preview .preview form select {
     margin-bottom: 1rem;
     padding: 0.3rem;
@@ -370,6 +377,40 @@ button:hover {
 
 .products-preview .preview form button i{
     color: var(--white);
+}
+.products-preview .qty-input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.products-preview .qty-input-wrapper div {
+    border: 2px solid var(--grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size:25px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    background-color: var(--white);transition: 0.3s;
+}
+.products-preview .qty-input-wrapper div:hover {
+    background-color: var(--pink);
+    color: var(--white);
+    border: 2px solid var(--pink);
+}
+.products-preview .qty-input-wrapper div:active {
+    opacity: 0.8;
+}
+.products-preview .qty-input-wrapper input {
+    border: 2px solid var(--grey);
+    border-left: none;
+    border-right: none;
+    text-align: right;
+    height: 40px;font-size: 20px;
+    width:40px;
+    background-color: var(--white);
 }
 
 /* ------------------------------cart styles ----------------------------------------- */
@@ -735,6 +776,9 @@ button:hover {
     }
     .myaccount .options {
         overflow-x: scroll;justify-content: left;
+    }
+    .products-preview .qty-input-wrapper input {
+        text-align: center;
     }
 }
 

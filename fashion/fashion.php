@@ -289,7 +289,11 @@
                                         }
                                     ?>
 
-                                    <input type="number" name="quantity" id="quantity" value="0" min="0" required>
+                                    <div class="qty-input-wrapper">
+                                        <div onclick="decrease(this)">-</div>
+                                        <input type="number" name="quantity" id="quantity" value="0" min="0" required>
+                                        <div onclick="increase(this)">+</div>
+                                    </div>
 
                                     <button type="submit" name="add_to_cart" class="cart_btn">
                                         <i class="fa-solid fa-cart-shopping"></i>Add to Cart
