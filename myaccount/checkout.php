@@ -22,6 +22,10 @@
 
     $points = 0;
 
+    if (!isset($_SESSION['points'])) {
+        $_SESSION['points'] = 0;
+    }
+
     if (isset($_POST['spend'])) {
         $points =  $_POST['points'];
         $_SESSION['points'] = $points;
@@ -70,7 +74,6 @@
 
 
     }
-
 
 ?>
 <!DOCTYPE html>
@@ -183,11 +186,11 @@
                         <form action="" method="post">
                             <div class="input-box points">
                                 <div class="label"><span>0</span> <span><?php echo $current_points ?></span></div>
-                                <input type="range" name="points" id="points" min='0' max="<?php echo $current_points ?>" value="<?php echo $points ?>" onchange="handlePoints(this)">
+                                <input type="range" name="points" id="points" min='0' max="<?php echo $current_points ?>" value="<?php echo $_SESSION['points'] ?>" onchange="handlePoints(this)">
                             </div>
 
                             <div class="input-box" style="text-align: left;">
-                                You will get <span style="font-weight: 600;" class="points_display">RS. <?php echo $points ?></span> as discount.
+                                You will get <span style="font-weight: 600;" class="points_display">RS. <?php echo $_SESSION['points'] ?></span> as discount.
                             </div>
                             <div class="input-box">
                                 <button type="submit" name="spend">confirm</button>
@@ -211,7 +214,7 @@
                         }
                         echo "</table>";
                         echo "<h4 style='font-weight:600;font-size:16px'>SUB TOTAL&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : Rs. " . getSubtotal($connection, $_SESSION['user_id']) . "</h4>";
-                        echo "<h4 style='font-weight:600;font-size:16px'>DISCOUNT&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : Rs. " . $points . "</h4>";
+                        echo "<h4 style='font-weight:600;font-size:16px'>DISCOUNT&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : Rs. " . $_SESSION['points'] . "</h4>";
                         echo "<h4 style='font-weight:600;font-size:18px'>GRAND TOTAL&nbsp&nbsp&nbsp&nbsp : Rs. " . doubleval(getSubtotal($connection, $_SESSION['user_id']) - doubleval($_SESSION['points'])) . "</h4>";
                         echo "<h4 style='margin:15px 0;'>YOU WILL EARN " . getPoints($connection) . " POINTS FROM THIS ORDER.</h4>";
                     ?>
