@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2023 at 07:55 AM
+-- Generation Time: Feb 06, 2024 at 12:31 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -117,7 +117,8 @@ INSERT INTO `messages` (`message_id`, `name`, `email`, `message`, `date`) VALUES
 (4, 'tae', 'tae@gmail.com', 'Hello, I\'m considering making a purchase but wanted to understand your return or exchange policy. Could you provide me with more details?', '2023-11-30 15:32:39'),
 (5, 'kamal', 'kamal@gmail.com', 'Hi! I\'m a fashion influencer/ blogger and would love to collaborate with your brand. Are you currently open to partnerships or collaborations?', '2023-11-30 15:35:57'),
 (6, 'abiram', 'abi@gmail.com', 'Hello! Just wanted to express how much I adore your recent collection. The attention to detail is stunning! Keep up the fantastic work.', '2023-11-30 15:59:14'),
-(9, 'Mohan', 'mohan123@yahoo.com', 'Greetings! I\'m interested in purchasing your products in bulk/wholesale for my boutique. Can you provide information on wholesale pricing and minimum order quantities?', '2023-12-01 20:45:45');
+(9, 'Mohan', 'mohan123@yahoo.com', 'Greetings! I\'m interested in purchasing your products in bulk/wholesale for my boutique. Can you provide information on wholesale pricing and minimum order quantities?', '2023-12-01 20:45:45'),
+(24, 'Jeya', 'jeya@gmail.com', 'do you have gifts for purchase?', '2024-01-17 14:57:54');
 
 -- --------------------------------------------------------
 
@@ -152,7 +153,23 @@ INSERT INTO `order_items` (`order_item_id`, `order_id`, `product_id`, `quantity`
 (10012, 10008, 1042, 1, 3, 9, 890.00),
 (10013, 10008, 1043, 1, 3, 9, 1485.00),
 (10014, 10008, 1003, 1, 3, 3, 1456.25),
-(10015, 10009, 1079, 2, 3, 3, 10350.00);
+(10015, 10009, 1079, 2, 3, 3, 10350.00),
+(10016, 10010, 2130, 2, 18, 3, 13000.00),
+(10017, 10011, 1030, 1, 3, 1, 11300.00),
+(10018, 10012, 2081, 2, 5, 4, 5700.00),
+(10019, 10013, 1084, 1, 3, 7, 11625.00),
+(10020, 10013, 2080, 2, 7, 3, 4400.00),
+(10021, 10014, 2132, 1, 17, 6, 6650.00),
+(10022, 10015, 1011, 1, 3, 5, 4523.56),
+(10023, 10016, 2080, 1, 5, 5, 2200.00),
+(10024, 10017, 2133, 2, 17, 3, 6000.00),
+(10025, 10018, 1080, 1, 3, 16, 11680.00),
+(10026, 10019, 1083, 1, 3, 3, 6300.00),
+(10027, 10020, 2127, 2, 11, 6, 6000.00),
+(10028, 10021, 2080, 2, 5, 5, 4400.00),
+(10029, 10022, 1001, 3, 3, 4, 6000.00),
+(10030, 10023, 2132, 4, 15, 2, 26600.00),
+(10031, 10023, 2133, 2, 18, 1, 6000.00);
 
 -- --------------------------------------------------------
 
@@ -185,7 +202,21 @@ INSERT INTO `order_shipping` (`shipping_id`, `order_id`, `first_name`, `last_nam
 (11, 10006, 'Mary', 'Jack', 'mary@gmail.com', '0725896354', 'gampaha', 12000, 'kelaniya', '123, lilly street, lilly', ''),
 (12, 10007, 'Monal', 'Ravichandar', 'Monal@gmail.com', '0789654125', 'Jaffna', 4569, 'Jaffna', '123, lotus street, lotus', ''),
 (13, 10008, 'Mary', 'Jack', 'mary@gmail.com', '0725896354', 'gampaha', 11507, 'lotus', '123, lilly street, lilly', ''),
-(14, 10009, 'Alex', 'Bravo', 'alex@gmail.com', '0785412596', 'Colombo', 11500, 'kelaniya', '123, lotus street, lotus', '');
+(14, 10009, 'Alex', 'Bravo', 'alex@gmail.com', '0785412596', 'Colombo', 11500, 'kelaniya', '123, lotus street, lotus', ''),
+(15, 10010, 'Mary', 'Jack', 'mary@gmail.com', '0725896354', 'gampaha', 12000, 'Jaffna', '123, lilly street, lilly', ''),
+(16, 10011, 'Alex', 'hello', 'alex@gmail.com', '0785412596', 'Colombo', 11500, 'Jaffna', '123', ''),
+(17, 10012, 'Alex', 'Jack', 'alex@gmail.com', '0785412596', 'Colombo', 11500, 'kelaniya', '123, lotus street, lotus', ''),
+(18, 10013, 'Helani', 'herath', 'helani@gmail.com', '0785412545', 'Colombo', 15896, 'watala', '789, helani street, watala', ''),
+(19, 10014, 'Helani', 'herath', 'helani@gmail.com', '0785412545', 'Colombo', 15896, 'watala', '789, helani street, watala', ''),
+(20, 10015, 'Helani', 'herath', 'helani@gmail.com', '0785412545', 'colombo', 15896, 'Jaffna', '789, helani street, watala', ''),
+(21, 10016, 'Helani', 'herath', 'helani@gmail.com', '0785412545', 'Colombo', 11500, 'watala', '789, helani street, watala', ''),
+(22, 10017, 'pooja', 'boblax', 'pooja@gmail.com', '0745896328', 'colombo', 11500, 'watala', '789, helani street, watala', ''),
+(23, 10018, 'pooja', 'Bravo', 'pooja@gmail.com', '0745896328', 'gampaha', 11507, 'kelaniya', '123, lilly street, lilly', ''),
+(24, 10019, 'amali', 'egvar', 'amali@gmail.com', '0741000256', 'gampaha', 11500, 'kelaniya', '123, lilly street, lilly', ''),
+(25, 10020, 'amali', 'agvar', 'amali@gmail.com', '0741000256', 'Colombo', 11507, 'Jaffna', '123, lotus street, lotus', ''),
+(26, 10021, 'amalai', 'agvar', 'amali@gmail.com', '0741000256', 'gampaha', 11507, 'kelaniya', '789, helani street, watala', ''),
+(27, 10022, 'Mary', 'Jack', 'mary@gmail.com', '0725896354', 'Colombo', 11507, 'kelaniya', '123, lilly street, lilly', ''),
+(28, 10023, 'Mary', 'Jack', 'mary@gmail.com', '0725896354', 'Colombo', 11507, 'kelaniya', '123, lilly street, lilly', '');
 
 -- --------------------------------------------------------
 
@@ -199,6 +230,8 @@ CREATE TABLE `placed_order` (
   `date` datetime NOT NULL DEFAULT current_timestamp(),
   `total_amount` float(10,2) NOT NULL,
   `payment_method` varchar(150) NOT NULL,
+  `points_earned` int(11) NOT NULL,
+  `points_redeemed` int(11) NOT NULL,
   `status` varchar(50) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -206,14 +239,28 @@ CREATE TABLE `placed_order` (
 -- Dumping data for table `placed_order`
 --
 
-INSERT INTO `placed_order` (`order_id`, `user_id`, `date`, `total_amount`, `payment_method`, `status`) VALUES
-(10003, 123456, '2023-12-02 18:52:54', 10550.00, 'cash at delivary', 'shipped'),
-(10004, 123456, '2023-11-02 18:59:10', 2569.96, 'cash at delivary', 'delivered'),
-(10005, 123456, '2023-12-04 09:19:53', 15002.22, 'credit card/debit card', 'shipped'),
-(10006, 123456, '2023-12-05 19:18:29', 18144.24, 'cash at delivary', 'delivered'),
-(10007, 123466, '2023-12-07 15:31:34', 6495.00, 'credit card/debit card', 'pending'),
-(10008, 123456, '2023-12-10 08:39:26', 7931.25, 'cash at delivary', 'pending'),
-(10009, 123468, '2023-12-14 08:52:31', 10350.00, 'credit card/debit card', 'pending');
+INSERT INTO `placed_order` (`order_id`, `user_id`, `date`, `total_amount`, `payment_method`, `points_earned`, `points_redeemed`, `status`) VALUES
+(10003, 123456, '2023-12-02 18:52:54', 10550.00, 'cash at delivary', 105, 0, 'shipped'),
+(10004, 123456, '2023-11-02 18:59:10', 2569.96, 'cash at delivary', 25, 0, 'delivered'),
+(10005, 123456, '2023-12-04 09:19:53', 15002.22, 'credit card/debit card', 150, 0, 'shipped'),
+(10006, 123456, '2023-12-05 19:18:29', 18144.24, 'cash at delivary', 181, 0, 'delivered'),
+(10007, 123466, '2023-12-07 15:31:34', 6495.00, 'credit card/debit card', 64, 0, 'pending'),
+(10008, 123456, '2023-12-10 08:39:26', 7931.25, 'cash at delivary', 79, 0, 'shipped'),
+(10009, 123468, '2023-12-14 08:52:31', 10350.00, 'credit card/debit card', 103, 0, 'pending'),
+(10010, 123456, '2023-12-16 19:02:25', 13050.00, 'cash at delivary', 130, 0, 'pending'),
+(10011, 123468, '2023-12-24 15:10:08', 11320.00, 'cash at delivary', 113, 30, 'shipped'),
+(10012, 123468, '2023-12-24 15:17:03', 5680.00, 'credit card/debit card', 57, 20, 'pending'),
+(10013, 123476, '2024-01-17 15:24:39', 16025.00, 'credit card/debit card', 160, 0, 'Cancelled'),
+(10014, 123476, '2024-01-17 15:52:56', 6602.00, 'credit card/debit card', 66, 48, 'delivered'),
+(10015, 123476, '2024-01-17 16:06:17', 4405.56, 'credit card/debit card', 45, 118, 'pending'),
+(10016, 123476, '2024-01-17 16:09:22', 2250.00, 'cash at delivary', 22, 0, 'pending'),
+(10017, 123477, '2024-01-17 17:28:38', 6200.00, 'cash at delivary', 60, 0, 'shipped'),
+(10018, 123477, '2024-01-17 17:31:04', 11709.00, 'cash at delivary', 116, 21, 'pending'),
+(10019, 123478, '2024-01-24 19:09:00', 6350.00, 'cash at delivary', 63, 0, 'Cancelled'),
+(10020, 123478, '2024-01-24 19:12:38', 5937.00, 'credit card/debit card', 60, 63, 'pending'),
+(10021, 123478, '2024-01-24 19:14:59', 4390.00, 'cash at delivary', 44, 60, 'pending'),
+(10022, 123456, '2024-01-27 18:15:01', 5690.00, 'cash at delivary', 60, 360, 'pending'),
+(10023, 123456, '2024-01-27 21:27:16', 32455.00, 'cash at delivary', 326, 195, 'pending');
 
 -- --------------------------------------------------------
 
@@ -610,7 +657,8 @@ INSERT INTO `product_color` (`color_id`, `color_name`) VALUES
 (18, 'lightgreen'),
 (19, 'lavender pink'),
 (20, 'maroon'),
-(21, 'purple');
+(21, 'purple'),
+(22, 'color');
 
 -- --------------------------------------------------------
 
@@ -647,7 +695,9 @@ INSERT INTO `product_size` (`size_id`, `size_name`) VALUES
 (19, '34'),
 (20, '36'),
 (21, '38'),
-(22, '40');
+(22, '40'),
+(23, '50'),
+(24, '52');
 
 -- --------------------------------------------------------
 
@@ -1684,7 +1734,7 @@ INSERT INTO `product_stock` (`stock_id`, `product_id`, `color_id`, `size_id`, `s
 (1317, 2080, 2, 5, 200),
 (1318, 2080, 3, 5, 200),
 (1319, 2080, 4, 5, 200),
-(1320, 2080, 5, 5, 200),
+(1320, 2080, 5, 5, 197),
 (1321, 2080, 6, 5, 200),
 (1322, 2080, 7, 5, 200),
 (1323, 2080, 8, 5, 200),
@@ -1698,7 +1748,7 @@ INSERT INTO `product_stock` (`stock_id`, `product_id`, `color_id`, `size_id`, `s
 (1331, 2080, 8, 6, 200),
 (1332, 2080, 1, 7, 200),
 (1333, 2080, 2, 7, 200),
-(1334, 2080, 3, 7, 200),
+(1334, 2080, 3, 7, 198),
 (1335, 2080, 4, 7, 200),
 (1336, 2080, 5, 7, 200),
 (1337, 2080, 6, 7, 200),
@@ -1731,7 +1781,7 @@ INSERT INTO `product_stock` (`stock_id`, `product_id`, `color_id`, `size_id`, `s
 (1364, 2081, 1, 5, 200),
 (1365, 2081, 2, 5, 200),
 (1366, 2081, 3, 5, 200),
-(1367, 2081, 4, 5, 200),
+(1367, 2081, 4, 5, 198),
 (1368, 2081, 5, 5, 200),
 (1369, 2081, 6, 5, 200),
 (1370, 2081, 7, 5, 200),
@@ -3018,7 +3068,7 @@ INSERT INTO `product_stock` (`stock_id`, `product_id`, `color_id`, `size_id`, `s
 (2650, 2130, 6, 17, 200),
 (2651, 2130, 1, 18, 200),
 (2652, 2130, 2, 18, 200),
-(2653, 2130, 3, 18, 200),
+(2653, 2130, 3, 18, 198),
 (2654, 2130, 4, 18, 200),
 (2655, 2130, 6, 18, 200),
 (2656, 2130, 1, 19, 200),
@@ -3081,8 +3131,8 @@ INSERT INTO `product_stock` (`stock_id`, `product_id`, `color_id`, `size_id`, `s
 (2713, 2131, 3, 22, 200),
 (2714, 2131, 4, 22, 200),
 (2715, 2131, 6, 22, 200),
-(2716, 2132, 1, 15, 200),
-(2717, 2132, 2, 15, 200),
+(2716, 2132, 1, 15, 193),
+(2717, 2132, 2, 15, 196),
 (2718, 2132, 3, 15, 200),
 (2719, 2132, 4, 15, 200),
 (2720, 2132, 6, 15, 200),
@@ -3095,7 +3145,7 @@ INSERT INTO `product_stock` (`stock_id`, `product_id`, `color_id`, `size_id`, `s
 (2727, 2132, 2, 17, 200),
 (2728, 2132, 3, 17, 200),
 (2729, 2132, 4, 17, 200),
-(2730, 2132, 6, 17, 200),
+(2730, 2132, 6, 17, 199),
 (2731, 2132, 1, 18, 200),
 (2732, 2132, 2, 18, 200),
 (2733, 2132, 3, 18, 200),
@@ -3133,10 +3183,10 @@ INSERT INTO `product_stock` (`stock_id`, `product_id`, `color_id`, `size_id`, `s
 (2765, 2133, 6, 16, 200),
 (2766, 2133, 1, 17, 200),
 (2767, 2133, 2, 17, 200),
-(2768, 2133, 3, 17, 200),
+(2768, 2133, 3, 17, 198),
 (2769, 2133, 4, 17, 200),
 (2770, 2133, 6, 17, 200),
-(2771, 2133, 1, 18, 200),
+(2771, 2133, 1, 18, 198),
 (2772, 2133, 2, 18, 200),
 (2773, 2133, 3, 18, 200),
 (2774, 2133, 4, 18, 200),
@@ -3494,7 +3544,7 @@ INSERT INTO `product_stock` (`stock_id`, `product_id`, `color_id`, `size_id`, `s
 (3126, 2127, 3, 11, 200),
 (3127, 2127, 4, 11, 200),
 (3128, 2127, 5, 11, 200),
-(3129, 2127, 6, 11, 200),
+(3129, 2127, 6, 11, 198),
 (3130, 2127, 7, 11, 200),
 (3131, 2127, 8, 11, 200),
 (3132, 2127, 1, 12, 200),
@@ -3897,7 +3947,7 @@ INSERT INTO `product_stock` (`stock_id`, `product_id`, `color_id`, `size_id`, `s
 (10018, 1010, 8, 3, 200),
 (10019, 1010, 1, 3, 200),
 (10020, 1010, 3, 3, 200),
-(10021, 1011, 5, 3, 194),
+(10021, 1011, 5, 3, 193),
 (10022, 1012, 5, 3, 200),
 (10023, 1013, 1, 3, 200),
 (10024, 1013, 3, 3, 200),
@@ -3922,10 +3972,10 @@ INSERT INTO `product_stock` (`stock_id`, `product_id`, `color_id`, `size_id`, `s
 (10043, 1021, 8, 3, 200),
 (10044, 1021, 1, 3, 200),
 (10045, 1003, 1, 3, 152),
-(10064, 1030, 1, 3, 200),
+(10064, 1030, 1, 3, 199),
 (10065, 1030, 3, 3, 200),
 (10066, 1030, 5, 3, 200),
-(10067, 1001, 4, 3, 198),
+(10067, 1001, 4, 3, 195),
 (10068, 1032, 1, 3, 200),
 (10069, 1032, 4, 3, 200),
 (10070, 1032, 2, 3, 200),
@@ -3976,15 +4026,15 @@ INSERT INTO `product_stock` (`stock_id`, `product_id`, `color_id`, `size_id`, `s
 (10139, 1081, 11, 3, 100),
 (10140, 1081, 10, 3, 100),
 (10141, 1080, 17, 3, 200),
-(10142, 1080, 16, 3, 100),
+(10142, 1080, 16, 3, 99),
 (10143, 1080, 14, 3, 200),
 (10144, 1079, 1, 3, 200),
 (10145, 1079, 3, 3, 198),
 (10146, 1078, 2, 3, 100),
 (10147, 1078, 3, 3, 200),
 (10148, 1078, 12, 3, 200),
-(10149, 1084, 7, 3, 200),
-(10150, 1083, 3, 3, 200),
+(10149, 1084, 7, 3, 199),
+(10150, 1083, 3, 3, 199),
 (10151, 1082, 18, 3, 200),
 (10152, 1077, 19, 3, 100),
 (10153, 1076, 20, 3, 100),
@@ -4199,7 +4249,8 @@ INSERT INTO `reviews` (`review_id`, `user_id`, `comment`, `num_of_stars`, `date`
 (3, 123460, 'I love standing out, and this store offers such a diverse range of styles that cater to different tastes. The fabric quality is remarkable, and the designs are always on-trend. The prices are reasonable for the value you receive. ', 5, '2023-12-01 14:10:05'),
 (4, 123461, 'Shopping here was an absolute breeze! The website layout is user-friendly, making it easy to navigate and find exactly what I was looking for. The checkout process was smooth, and I appreciated the variety of payment options available. .', 5, '2023-12-01 14:10:05'),
 (5, 123462, 'What an amazing experience! Not only were the clothes exactly what I expected but service was also excellent.', 5, '2023-12-01 14:10:05'),
-(6, 123456, 'Quality was so good! I love the feel of the clothes and I enjoyed the style, the clothes match the image perfectly.', 5, '2023-12-01 14:10:05');
+(6, 123456, 'Quality was so good! I love the feel of the clothes and I enjoyed the style, the clothes match the image perfectly.', 3, '2023-12-01 14:10:05'),
+(10, 123456, 'good', 3, '2024-01-27 21:28:11');
 
 -- --------------------------------------------------------
 
@@ -4216,6 +4267,14 @@ CREATE TABLE `shopping_cart` (
   `size_id` int(11) NOT NULL,
   `amount` float(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `shopping_cart`
+--
+
+INSERT INTO `shopping_cart` (`cart_item_id`, `user_id`, `product_id`, `quantity`, `color_id`, `size_id`, `amount`) VALUES
+(45, 123475, 1080, 1, 17, 3, 11680.00),
+(47, 123471, 2132, 1, 2, 16, 6650.00);
 
 -- --------------------------------------------------------
 
@@ -4234,25 +4293,32 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `password` char(255) NOT NULL,
   `reg_date` date NOT NULL DEFAULT current_timestamp(),
-  `user_type` varchar(50) NOT NULL
+  `user_type` varchar(50) NOT NULL,
+  `current_point_balance` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `first_name`, `last_name`, `phone`, `address_line1`, `address_line2`, `email`, `password`, `reg_date`, `user_type`) VALUES
-(123456, 'Mary', 'Mary', 'Jack', '0725896354', '123, lilly street, lilly', '', 'mary@gmail.com', '$2y$10$bipimyfSfcwKYMeQzpRvl.oasncpyftFihA2dlLCuCMU2tLOVX8Pa', '2023-12-01', 'customer'),
-(123457, 'James', '', '', '0789632145', '', '', 'james@gmail.com', '$2y$10$k0O36e0BELqk6G.WmKOna.26TfeBv1jcyBG39hRAift7j3mu0RQFK', '2023-11-01', 'customer'),
-(123459, 'Rahul', '', '', '0785463589', '', '', 'rahul@gmail.com', '$2y$10$v6mfJAlyzKPK.tNJcdM2e.ufxZwSUBTYM8ozgYD44cIctythFMA/q', '2023-12-01', 'admin'),
-(123460, 'David', '', '', '0758963254', '', '', 'david@gmal.com', '$2y$10$7rkKuIfbYxo6fy0Wy8DEm.Tmv02ZKCq4rpwqdZwN1Fs/k15KP7Ok.', '2023-12-01', 'customer'),
-(123461, 'Silviya', '', '', '0741250321', '', '', 'silviya@gmail.com', '$2y$10$KbWAOIUNQYfgsGtbM.DGwOfac/fE/c3MLelodDjW4OBnxKgkkZ8Ri', '2023-10-01', 'customer'),
-(123463, 'Keerthana', '', '', '0785412365', '', '', 'keer@gmail.com', '$2y$10$xapHpGGva00m7gnvIkbbieEhb3rfFaKtErGQp/XhoCfzkAxBmEQyy', '2023-12-03', 'customer'),
-(123464, 'Vickram', '', '', '0741258963', '', '', 'vick@gmail.com', '$2y$10$srp5twghGXyuneOI.mfLiuzC2LyTvSW2MNjVI173kYoVGnHtbAgcO', '2023-12-03', 'admin'),
-(123465, 'Natasha', '', '', '0745896321', '', '', 'nat@gmail.com', '$2y$10$S7j0Z5AdmI7u7zwAuUZE1OkrqNXPNMT7Lcip21LGp74v.uOuxG4lG', '2023-12-07', 'customer'),
-(123466, 'Monalisa', '', '', '0789654125', '', '', 'Monal@gmail.com', '$2y$10$HsVtp/lVB9zQMg4hn1u/QuHc7On4uqJWpFamxHYTfH5jDDnTmQDE2', '2023-12-07', 'customer'),
-(123467, 'Shreya', '', '', '0785412589', '', '', 'shreya@gmal.com', '$2y$10$5TltipZi3b/9l.egrIBDned7xRosSY2OYu2CkUz2IfUu/h9dqWtfy', '2023-12-08', 'customer'),
-(123468, 'Alex', '', '', '0785412596', '', '', 'alex@gmail.com', '$2y$10$izIl0aX0drQlA1D54NTQSeLyOif/R0aZfzx5dbCJ4bzPlPkJFhIGC', '2023-12-08', 'customer');
+INSERT INTO `users` (`user_id`, `username`, `first_name`, `last_name`, `phone`, `address_line1`, `address_line2`, `email`, `password`, `reg_date`, `user_type`, `current_point_balance`) VALUES
+(123456, 'Mary', 'Mary', 'Jack', '0725896354', '123, lilly street, lilly', '', 'mary@gmail.com', '$2y$10$bipimyfSfcwKYMeQzpRvl.oasncpyftFihA2dlLCuCMU2tLOVX8Pa', '2023-12-01', 'customer', 501),
+(123457, 'James', '', '', '0789632145', '', '', 'james@gmail.com', '$2y$10$k0O36e0BELqk6G.WmKOna.26TfeBv1jcyBG39hRAift7j3mu0RQFK', '2023-11-01', 'customer', 0),
+(123459, 'Rahul', '', '', '0785463589', '', '', 'rahul@gmail.com', '$2y$10$v6mfJAlyzKPK.tNJcdM2e.ufxZwSUBTYM8ozgYD44cIctythFMA/q', '2023-12-01', 'admin', 0),
+(123461, 'Silviya', '', '', '0741250321', '', '', 'silviya@gmail.com', '$2y$10$KbWAOIUNQYfgsGtbM.DGwOfac/fE/c3MLelodDjW4OBnxKgkkZ8Ri', '2023-10-01', 'customer', 0),
+(123463, 'Keerthana', '', '', '0785412365', '', '', 'keer@gmail.com', '$2y$10$xapHpGGva00m7gnvIkbbieEhb3rfFaKtErGQp/XhoCfzkAxBmEQyy', '2023-12-03', 'customer', 0),
+(123464, 'Vickram', '', '', '0741258963', '', '', 'vick@gmail.com', '$2y$10$srp5twghGXyuneOI.mfLiuzC2LyTvSW2MNjVI173kYoVGnHtbAgcO', '2023-12-03', 'admin', 0),
+(123465, 'Natasha', '', '', '0745896321', '', '', 'nat@gmail.com', '$2y$10$S7j0Z5AdmI7u7zwAuUZE1OkrqNXPNMT7Lcip21LGp74v.uOuxG4lG', '2023-12-07', 'customer', 0),
+(123466, 'Monalisa', '', '', '0789654125', '', '', 'Monal@gmail.com', '$2y$10$HsVtp/lVB9zQMg4hn1u/QuHc7On4uqJWpFamxHYTfH5jDDnTmQDE2', '2023-12-07', 'customer', 64),
+(123467, 'Shreya', '', '', '0785412589', '', '', 'shreya@gmal.com', '$2y$10$5TltipZi3b/9l.egrIBDned7xRosSY2OYu2CkUz2IfUu/h9dqWtfy', '2023-12-08', 'customer', 0),
+(123468, 'Alex', '', '', '0785412596', '', '', 'alex@gmail.com', '$2y$10$izIl0aX0drQlA1D54NTQSeLyOif/R0aZfzx5dbCJ4bzPlPkJFhIGC', '2023-12-08', 'customer', 223),
+(123470, 'Geetha', '', '', '0785469358', '', '', 'geetha@gmail.com', '$2y$10$YQuXhJTJoMucGuY0yPMcYeQP9qO0S3TauPnmymsfmPgYO.rFTBWjq', '2023-12-16', 'customer', 0),
+(123471, 'Jeya', '', '', '0785463258', '', '', 'jeya@gmail.com', '$2y$10$WLoUbcSFRIQkM.yzZoGPZ.sQiRyFTmyJbejbULaGSxaKOI4hln/cO', '2023-12-16', 'customer', 0),
+(123474, 'Vedha', '', '', '0785412589', '', '', 'vedha@gmail.com', '$2y$10$eQjuhWSX8zlg78X83p40XunRRmL7QsTL2KLe8uU5vWlS2qfai6T22', '2023-12-17', 'customer', 0),
+(123475, 'Maya', '', '', '0758963254', '', '', 'maya@gmail.com', '$2y$10$zBEDqCJ2oQCj2R8roy0L3uV9GpoctchR2L9eYzzwVZwJ9zCWIgpQy', '2023-12-17', 'customer', 0),
+(123476, 'Helani', 'Helani', 'herath', '0785412545', '789, helani street, watala', '', 'helani@gmail.com', '$2y$10$zKsb79nXa5SZ68ZIBslN4uGn.jPy9pOSQPg/asXwFrhZ86Sq1fMD2', '2024-01-17', 'customer', 127),
+(123477, 'pooja', '', '', '0745896328', '', '', 'pooja@gmail.com', '$2y$10$YZ5whhoR0O3PnEmlbIElIeGIa72pWMg82KM.VpMtpQcni0g3uJDxS', '2024-01-17', 'customer', 155),
+(123478, 'Amali', '', '', '0741000256', '', '', 'amali@gmail.com', '$2y$10$jSy8E3tRP0fEEbfkPW1nGuCo91mfuCapMTC/eDNoZVitBACo6UaOq', '2024-01-24', 'customer', 44);
 
 -- --------------------------------------------------------
 
@@ -4274,7 +4340,10 @@ INSERT INTO `wishlist` (`wishlist_id`, `user_id`, `product_id`) VALUES
 (130, 123466, 1046),
 (131, 123466, 1047),
 (134, 123456, 1078),
-(135, 123468, 2085);
+(135, 123468, 2085),
+(142, 123456, 2133),
+(143, 123476, 2080),
+(144, 123476, 2132);
 
 --
 -- Indexes for dumped tables
@@ -4407,25 +4476,25 @@ ALTER TABLE `main_category`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10016;
+  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10032;
 
 --
 -- AUTO_INCREMENT for table `order_shipping`
 --
 ALTER TABLE `order_shipping`
-  MODIFY `shipping_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `shipping_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `placed_order`
 --
 ALTER TABLE `placed_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10010;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10024;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -4437,13 +4506,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `product_color`
 --
 ALTER TABLE `product_color`
-  MODIFY `color_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `color_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `product_size`
 --
 ALTER TABLE `product_size`
-  MODIFY `size_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `size_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `product_stock`
@@ -4455,25 +4524,25 @@ ALTER TABLE `product_stock`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `shopping_cart`
 --
 ALTER TABLE `shopping_cart`
-  MODIFY `cart_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `cart_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123469;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123479;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- Constraints for dumped tables
